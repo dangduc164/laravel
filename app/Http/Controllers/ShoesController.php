@@ -37,22 +37,6 @@ class ShoesController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-
-        if ($request->hasFile('image_path')) //kiểm tra xem trong $request có file hay không
-        {
-            $img = $request->image_path;
-            //lấy tên file
-            $imgNew =  $img->getClientOriginalName();
-            $img->move('images/img-shoes', $imgNew); //upload file vào thư mục public/images
-            // Lưu tên ảnh trên DB
-            $input['image_path'] = $imgNew;
-        } else {
-            echo "Bạn chưa có file";
-        }
-        Shoes_product::add($input);
-
-        return redirect()->route('layouts.shoes')->with('success', 'Thên sản phẩm mới thành công !');
     }
 
     /**
@@ -97,6 +81,8 @@ class ShoesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shoes = Shoes_product::find($id);
+        $shoes->delete();
+        return redirect()->route('shoes')->with('success', 'Xóa thông tin liên hệ thành công!');
     }
 }

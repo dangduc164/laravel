@@ -122,9 +122,11 @@ Route::post('/show-female', [UpdateFemaleController::class, 'update'])->name('sh
 
 /** delete */
 Route::DELETE('/layouts/contact/delete/{id}', [ContactController::class, 'destroy'])->name('delete-contact');
-Route::DELETE('/layouts/female/delete/{id}', [FemaleController::class, 'destroy'])->name('delete-female');
+Route::DELETE('/layouts/female/delete/{id}', [Female_productController::class, 'destroy'])->name('delete-female');
 // Route::DELETE('/layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
 Route::DELETE('layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
+Route::DELETE('layouts/shoes/delete/{id}', [ShoesController::class, 'destroy'])->name('delete-shoes');
+
 /** end delete */
 
 /* end Admin */

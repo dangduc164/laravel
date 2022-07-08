@@ -45,7 +45,7 @@
                         <a href="{{ route('maleUI')}}">Đồ Thể Thao Nam</a>
                         <a href="{{ route('shoesUI')}}">Giầy Thể Thao</a>
                         <a href="{{ route('contactUI')}}">Liên Hệ</a>
-                        <a href="./dangnhap.html">Đăng Nhập</a>
+                        <a href="/login">Đăng Nhập</a>
 
                     </div>
                     <span class="toggle_icon" onclick="openNav()"><i class="fas fa-bars fa-3x"></i

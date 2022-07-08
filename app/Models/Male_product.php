@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +25,12 @@ class Male_product extends Model
     ];
     static function add($resquest)
     {
-        Male_product::create($resquest);
+        // Male_product::create($resquest);
+        try {
+            Male_product::create($resquest);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     }
 
     // static function upd($resquest){

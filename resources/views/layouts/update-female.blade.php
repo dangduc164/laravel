@@ -5,7 +5,7 @@
 
 <div class="main py-5">
     <div class="container">
-        <h2>Thêm sản phẩm nữ</h2>
+        <h2>Sửa thông tin sản phẩm nữ</h2>
         <form action="{{route('show-female')}}" method="POST" enctype="multipart/form-data">
             @csrf
             

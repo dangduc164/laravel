@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Male_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Female_product;
 
 class MaleController extends Controller
 {
@@ -83,7 +84,7 @@ class MaleController extends Controller
      */
     public function destroy($id)
     {
-        $males = Male_product::find($id);
+        $males = Female_product::find($id);
         $males->delete();
         return redirect()->route('male')->with('success', 'Xóa thông tin liên hệ thành công!');
     }

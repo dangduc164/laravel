@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Female_product;
 use App\Models\Male_product;
 use Illuminate\Http\Request;
 
@@ -49,8 +50,8 @@ class CreateMaleProductController extends Controller
         } else {
             echo "Bạn chưa có file";
         }
-        return redirect()->route('layouts.male')->with('success', 'Thên sản phẩm mới thành công !');
-        Male_product::add($input);
+        return redirect()->route('male')->with('success', 'Thên sản phẩm mới thành công !');
+        Female_product::add($input);
     }
 
     /**

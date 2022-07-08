@@ -20,6 +20,6 @@ class Spmale extends Model
     static function add($resquest)
     {
 
-        spmale::create($resquest);
+        Spmale::create($resquest);
     }
 }

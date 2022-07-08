@@ -98,6 +98,8 @@ class Male_productController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $males = Male_product::find($id);
+        $males->delete();
+        return redirect()->route('male')->with('success', 'Xóa sản phẩm nam thành công!');
     }
 }
