@@ -5,6 +5,14 @@
 
 <div class="main py-5">
   <div class="container-fluid">
+    {{-- thông báo --}}
+    @if(session('success'))
+        <div class="alert alert-success h4 text-white" id="alert" role="alert">
+            {{ session('success') }} 
+        </div>
+    @endif
+    {{--end thông báo --}}
+
     <div class="hanldeBtnCreateMale" >
         <button class="btn btn-success">
             <a class="text-white" href={{route('create-shoes')}}>
@@ -31,8 +39,20 @@
                     <td>{{$shoe -> name}}</td>
                     <td>{{$shoe -> price}}</td>
                     <td  style="display: flex; justify-content: space-evenly;">
-                        <button class="btn btn-primary"><i class="fa-solid fa-pen"></i> Chỉnh sửa</button>
-                        <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        <button class="btn btn-primary">
+                            <a class="text-white" href={{route('update-spshoes', $shoe->id)}}>
+                                <i class="fa-solid fa-pen"></i> Chỉnh sửa
+                            </a>
+                        </button>
+
+
+                        <form action="{{ route('delete-shoes',['id'=> $shoe->id]) }}" method="POST" onsubmit="returnConfirmDeletr(this)"> 
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger text-white" type="submit">
+                                <i class="fa-solid fa-trash-can"></i> Xóa
+                            </button>
+                    </form>
     
                     </td>
     

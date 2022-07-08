@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Shoes_product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ShoesController extends Controller
+class UpdateShoesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $shoes = DB::table('shoes_products')->get();
-        return view('layouts.shoes', compact('shoes'));
+        $shoes = Shoes_product::find($id);
+        return view('layouts.update-shoes', compact('shoes'));
     }
 
     /**
@@ -37,6 +36,7 @@ class ShoesController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -58,7 +58,10 @@ class ShoesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('layouts.update-shoes', [
+
+            'shoes' => Shoes_product::find($id)
+        ]);
     }
 
     /**
@@ -70,7 +73,25 @@ class ShoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        // dd($request);
+        $input = $request->all();
+        $img = $request->image_path;
+        //lấy tên file
+        $imgNew =  $img->getClientOriginalName();
+        $img->move('images/img-shoes', $imgNew); //upload file vào thư mục public/images
+        // Lưu tên ảnh trên DB
+        $input['image_path'] = $imgNew;
+        $shoes = [
+            'name' => $input['name'],
+            'price' => $input['price'],
+            'content' => $input['content'],
+            'image_path' => $input['image_path'],
+
+        ];
+        if (Shoes_product::upd($shoes, $id) == true) {
+            return redirect()->route('shoes')->with('success', 'Sửa sản phẩm thành công!' . $input['name']);
+        };
     }
 
     /**
@@ -81,8 +102,6 @@ class ShoesController extends Controller
      */
     public function destroy($id)
     {
-        $shoes = Shoes_product::find($id);
-        $shoes->delete();
-        return redirect()->route('shoes')->with('success', 'Xóa sản phẩm thành công!');
+        //
     }
 }

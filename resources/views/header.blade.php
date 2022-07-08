@@ -86,7 +86,7 @@
                         <div class="login_menu">
                             <ul>
                                 <li>
-                                    <a href="./giohang.html"><input type="button" value="Giỏ Hàng" class="btn btn-outline-danger text-white" /></a>
+                                    <a href="{{route('cartUI')}}"><input type="button" value="Giỏ Hàng" class="btn btn-outline-danger text-white" /></a>
                                 </li>
                                 <li>
                                     <a href="./dangnhap.html"><input type="button" value="Đăng Nhập" class="btn btn-outline-danger text-white" /></a>

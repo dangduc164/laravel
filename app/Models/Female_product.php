@@ -26,4 +26,10 @@ class Female_product extends Model
             throw $ex;
         }
     }
+
+    static function upd($resquest, $id)
+    {
+        Female_product::where('id', $id)->update($resquest);
+        return true;
+    }
 }

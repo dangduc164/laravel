@@ -75,6 +75,12 @@ class UpdateFemaleController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
+        $img = $request->image_path;
+        //lấy tên file
+        $imgNew =  $img->getClientOriginalName();
+        $img->move('images/img-female', $imgNew); //upload file vào thư mục public/images
+        // Lưu tên ảnh trên DB
+        $input['image_path'] = $imgNew;
 
         $females = [
             'name' => $input['name'],
@@ -83,7 +89,7 @@ class UpdateFemaleController extends Controller
             'image_path' => $input['image_path'],
         ];
         if (Male_product::upd($females, $id) == true) {
-            return redirect()->route('layouts.female')->with('success', 'Sửa sản phẩm thành công!' . $input['name']);
+            return redirect()->route('female')->with('success', 'Sửa sản phẩm thành công!' . $input['name']);
         };
     }
 

@@ -51,7 +51,7 @@ class CreateMaleProductController extends Controller
             echo "Bạn chưa có file";
         }
         return redirect()->route('male')->with('success', 'Thên sản phẩm mới thành công !');
-        Female_product::add($input);
+        Male_product::add($input);
     }
 
     /**

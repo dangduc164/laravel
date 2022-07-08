@@ -8,6 +8,8 @@
         <h2>Thêm sản phẩm nữ</h2>
         <form action="{{ route('add-spfemale') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+
             <div class="mb-3 mt-3">
                 <label for="name">Tên sản phẩm: </label>
                 <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm" name="name">

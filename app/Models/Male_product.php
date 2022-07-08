@@ -33,7 +33,9 @@ class Male_product extends Model
         }
     }
 
-    // static function upd($resquest){
-
-    // }
+    static function upd($resquest, $id)
+    {
+        Male_product::where('id', $id)->update($resquest);
+        return true;
+    }
 }

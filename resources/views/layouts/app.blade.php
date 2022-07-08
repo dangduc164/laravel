@@ -78,6 +78,13 @@
             <strong>Copyright &copy; 2022 <a href="https://www.facebook.com/ducden.164">Đăng Đức</a>.</strong>
         </footer>
     </div>
+    <script>
+        const myTimeout = setTimeout(myGreeting, 2500);
+     
+         function myGreeting() {
+         document.getElementById("alert").style.display = 'none';
+     }
+     </script>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
 

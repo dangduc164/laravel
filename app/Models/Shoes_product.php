@@ -19,4 +19,10 @@ class Shoes_product extends Model
     {
         Shoes_product::create($resquest);
     }
+
+    static function upd($resquest, $id)
+    {
+        Shoes_product::where('id', $id)->update($resquest);
+        return true;
+    }
 }

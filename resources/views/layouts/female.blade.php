@@ -6,6 +6,15 @@
 
 <div class="main py-5">
    <div class="container-fluid">
+
+  {{-- thông báo --}}
+  @if(session('success'))
+  <div class="alert alert-success h4 text-white" id="alert" role="alert">
+     {{ session('success') }} 
+  </div>
+  @endif
+  {{--end thông báo --}}
+
     <div class="hanldeBtnCreateMale" >
         <button class="btn btn-success">
             <a class="text-white" href={{route('create-female')}}>

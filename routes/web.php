@@ -19,7 +19,10 @@ use App\Http\Controllers\MaleController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShoesController;
 use App\Http\Controllers\UI;
+use App\Http\Controllers\UI\CartController;
 use App\Http\Controllers\UpdateFemaleController;
+use App\Http\Controllers\UpdateMaleController;
+use App\Http\Controllers\UpdateShoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +85,7 @@ Route::get('/shoesui', [App\Http\Controllers\UI\ShoesController::class, 'index']
 Route::post('/contactuisubmit', [App\Http\Controllers\UI\ContactController::class, 'store'])->name('contactUIsubmit');
 Route::get('/contactui', [App\Http\Controllers\UI\ContactController::class, 'index'])->name('contactUI');
 
+Route::get('/cartui', [CartController::class, 'index'])->name('cartUI');
 
 /*-- Admin --*/
 Auth::routes();
@@ -116,7 +120,13 @@ Route::get('/create-shoes', [CreateShoesProductController::class, 'index'])->nam
 
 /** sửa sản phẩm */
 Route::get('/female/show/{id}', [UpdateFemaleController::class, 'index'])->name('update-spfemale');
-Route::post('/show-female', [UpdateFemaleController::class, 'update'])->name('show-female');
+Route::post('/show-female/{id}', [UpdateFemaleController::class, 'update'])->name('show-female');
+
+Route::get('/male/show/{id}', [UpdateMaleController::class, 'index'])->name('update-spmale');
+Route::post('/show-male/{id}', [UpdateMaleController::class, 'update'])->name('show-male');
+
+Route::get('/shoes/show/{id}', [UpdateShoesController::class, 'index'])->name('update-spshoes');
+Route::post('/show-shoes/{id}', [UpdateShoesController::class, 'update'])->name('show-shoes');
 
 /** end sửa sản phẩm */
 

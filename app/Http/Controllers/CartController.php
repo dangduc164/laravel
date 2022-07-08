@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shoes_product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class ShoesController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class ShoesController extends Controller
      */
     public function index()
     {
-        $shoes = DB::table('shoes_products')->get();
-        return view('layouts.shoes', compact('shoes'));
+        //
     }
 
     /**
@@ -37,6 +34,7 @@ class ShoesController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -81,8 +79,6 @@ class ShoesController extends Controller
      */
     public function destroy($id)
     {
-        $shoes = Shoes_product::find($id);
-        $shoes->delete();
-        return redirect()->route('shoes')->with('success', 'Xóa sản phẩm thành công!');
+        //
     }
 }
