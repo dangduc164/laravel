@@ -20,24 +20,32 @@
                                 <h1 class="fashion_taital">Đồ tập GYM nữ</h1>
                                 <div class="fashion_section_2">
                                     <div class="row">
-                                        @foreach($females as $female)
-                                        <div class="col-lg-4 col-sm-4">
-                                            <div class="box_main">
-                                                <h4 class="shirt_text">{{$female -> name}}</h4>
-                                                <p class="price_text">
-                                                    Price <span style="color: #262626">$ {{$female -> price}}</span>
-                                                </p>
-                                                <div class="tshirt_img">
-                                                    <img class="zoom-img" class="zoom-img" src="./images/img-female/{{$female -> image_path}}" />
-                                                </div>
-                                                <div class="btn_main">
-                                                    <div class="buy_bt"><a href="javascript:" onclick="addcart({{$female -> id}})">Mua ngay</a></div>
-                                                    <div class="seemore_bt">
-                                                        <a href="#viewsp">Xem thêm...</a>
+                                        @foreach ($females as $female)
+                                            <div class="col-lg-4 col-sm-4">
+                                                <div class="box_main">
+                                                    <h4 class="shirt_text">{{ $female->name }}</h4>
+                                                    <p class="price_text">
+                                                        Price <span style="color: #262626">$
+                                                            {{ $female->price }}</span>
+                                                    </p>
+                                                    <div class="tshirt_img">
+                                                        <img class="zoom-img" class="zoom-img"
+                                                            src="./images/img-female/{{ $female->image_path }}" />
+                                                    </div>
+                                                    <div class="btn_main">
+                                                        <div class="buy_bt">
+
+                                                            <button type="button" class="btn btn-warning text-dark"
+                                                                data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                Mua ngay
+                                                            </button>
+                                                        </div>
+                                                        <div class="seemore_bt">
+                                                            <a href="#viewsp">Xem thêm...</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -59,23 +67,25 @@
                                 <div class="fashion_section_2">
                                     <div class="row">
                                         @foreach ($males as $male)
-                                        <div class="col-lg-4 col-sm-4">
-                                            <div class="box_main">
-                                                <h4 class="shirt_text"> {{$male->name}}</h4>
-                                                <p class="price_text">
-                                                    Start Price <span style="color: #262626">$ {{$male -> price}}</span>
-                                                </p>
-                                                <div class="electronic_img">
-                                                    <img class="zoom-img" src="./images/img-male/{{$male -> image_path}}" />
-                                                </div>
-                                                <div class="btn_main">
-                                                    <div class="buy_bt"><a href="#">Mua ngay</a></div>
-                                                    <div class="seemore_bt">
-                                                        <a href="#">Xem thêm...</a>
+                                            <div class="col-lg-4 col-sm-4">
+                                                <div class="box_main">
+                                                    <h4 class="shirt_text"> {{ $male->name }}</h4>
+                                                    <p class="price_text">
+                                                        Start Price <span style="color: #262626">$
+                                                            {{ $male->price }}</span>
+                                                    </p>
+                                                    <div class="electronic_img">
+                                                        <img class="zoom-img"
+                                                            src="./images/img-male/{{ $male->image_path }}" />
+                                                    </div>
+                                                    <div class="btn_main">
+                                                        <div class="buy_bt"><a href="#">Mua ngay</a></div>
+                                                        <div class="seemore_bt">
+                                                            <a href="#">Xem thêm...</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -97,23 +107,25 @@
                                 <div class="fashion_section_2">
                                     <div class="row">
                                         @foreach ($shoes as $shoe)
-                                        <div class="col-lg-4 col-sm-4">
-                                            <div class="box_main">
-                                                <h4 class="shirt_text">{{$shoe -> name}}</h4>
-                                                <p class="price_text">
-                                                    Start Price <span style="color: #262626">$ {{$shoe -> price}}</span>
-                                                </p>
-                                                <div class="jewellery_img">
-                                                    <img class="zoom-img" src="./images/img-shoes/{{$shoe -> image_path}}" />
-                                                </div>
-                                                <div class="btn_main">
-                                                    <div class="buy_bt"><a href="#">Mua ngay</a></div>
-                                                    <div class="seemore_bt">
-                                                        <a href="#">Xem thêm...</a>
+                                            <div class="col-lg-4 col-sm-4">
+                                                <div class="box_main">
+                                                    <h4 class="shirt_text">{{ $shoe->name }}</h4>
+                                                    <p class="price_text">
+                                                        Start Price <span style="color: #262626">$
+                                                            {{ $shoe->price }}</span>
+                                                    </p>
+                                                    <div class="jewellery_img">
+                                                        <img class="zoom-img"
+                                                            src="./images/img-shoes/{{ $shoe->image_path }}" />
+                                                    </div>
+                                                    <div class="btn_main">
+                                                        <div class="buy_bt"><a href="#">Mua ngay</a></div>
+                                                        <div class="seemore_bt">
+                                                            <a href="#">Xem thêm...</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -127,7 +139,7 @@
             </div>
         </div>
 
-        <div id="viewsp" style="display: none; width: 700px;">
+        {{-- <div id="viewsp" style="display: none; width: 700px;">
             <div class="product-page product-pop-up">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-3">
@@ -184,7 +196,66 @@
                     <div class="sticker sticker-sale"></div>
                 </div>
             </div>
+        </div> --}}
+
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="">
+                        <div class="row">
+                            <div class="col">
+                                <div class="img-product">
+                                    <img class="zoom-img" src="./images/img-female/{{ $female->image_path }}" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="content-product">
+                                    <div class="title-product">
+                                        <h2>{{ $female->name }}</h2>
+                                    </div>
+                                    <div class="price">
+                                        <h4>{{ $female->price }}</h4>
+                                    </div>
+                                    <div class="comment">
+                                        <p>{{ $female->content }}</p>
+                                    </div>
+
+                                    <div class="sl">
+                                        <label for="">số lượng</label>
+                                        <input type="number" value="1" />
+
+                                    </div>
+                                    <div class="size-product">
+                                        <label>Size</label>
+                                        <select name="size" id="size" style="width: 90%">
+                                            <option value="xs">xs</option>
+                                            <option value="s">s</option>
+                                            <option value="m">m</option>
+                                            <option value="l">l</option>
+                                            <option value="xl">xl</option>
+                                            <option value="xxl">xxl</option>
+                                        </select>
+                                    </div>
+                                    <div class="btn-group pt-3">
+                                        <a href="" class="btn btn-warning">Thêm vào giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
         </div>
+        <!-- end modal-->
+
     </main>
     {{-- end main --}}
 
@@ -195,6 +266,8 @@
     {{-- link js --}}
     @include('linkjs')
     {{-- end link js --}}
-  </body>
+</body>
+
 </html>
+
 </html>
