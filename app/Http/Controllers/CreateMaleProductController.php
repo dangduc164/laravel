@@ -43,15 +43,15 @@ class CreateMaleProductController extends Controller
             $img = $request->image_path;
             //lấy tên file
             $imgNew =  $img->getClientOriginalName();
-            $img->move('images/img-male', $imgNew); //upload file vào thư mục public/images
+            $img->move('images/img-female', $imgNew); //upload file vào thư mục public/images
             // Lưu tên ảnh trên DB
-
             $input['image_path'] = $imgNew;
         } else {
             echo "Bạn chưa có file";
         }
+        Female_product::add($input);
+
         return redirect()->route('male')->with('success', 'Thên sản phẩm mới thành công !');
-        Male_product::add($input);
     }
 
     /**
