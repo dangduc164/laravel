@@ -563,20 +563,28 @@ a:hover {
 }
 
 .zoom-img {
-    transition: all 1s ease;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
+    transition: all 1.5s ease;
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
 }
 
 .zoom-img:hover {
     cursor: pointer;
-    transform: scale(1.6, 1.6);
-    -webkit-transform: scale(1.6, 1.6);
-    -moz-transform: scale(1.6, 1.6);
-    -o-transform: scale(1.6, 1.6);
-    -ms-transform: scale(1.6, 1.6);
+    transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
 }
+/* .customImgShoes{
+    height: 350px;
+}
+@media(max-width: 1199px){
+    .customImgShoes{
+        height: 290px;
+    }
+} */
 
 .btn_main {
     width: 100%;

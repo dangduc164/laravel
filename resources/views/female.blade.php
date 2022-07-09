@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 @include('head')
 
 <body>
     {{-- header --}}
     @include('header')
     {{-- end header --}}
-    
+
     {{-- main --}}
     <main>
         <div class="female" id="female">
@@ -19,26 +19,29 @@
                                 <h1 class="fashion_taital">Đồ tập GYM nữ</h1>
                                 <div class="fashion_section_2">
                                     <div class="row">
-                                        @foreach($females as $female)
-                                        <div class="col-lg-4 col-sm-4">
-                                            <div class="box_main">
-                                                <h4 class="shirt_text">{{$female -> name}}</h4>
-                                                <p class="price_text">
-                                                    Price <span style="color: #262626">$ {{$female -> price}}</span>
-                                                </p>
-                                                <div class="tshirt_img">
-                                                    <img class="zoom-img" class="zoom-img" src="./images/img-female/{{$female -> image_path}}" />
-                                                </div>
-                                                <div class="btn_main">
-                                                    <div class="buy_bt">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Mua ngay</a>
+                                        @foreach ($females as $female)
+                                            <div class="col-lg-4 col-sm-4">
+                                                <div class="box_main">
+                                                    <h4 class="shirt_text">{{ $female->name }}</h4>
+                                                    <p class="price_text">
+                                                        Price <span style="color: #262626">$
+                                                            {{ $female->price }}</span>
+                                                    </p>
+                                                    <div class="tshirt_img">
+                                                        <img class="zoom-img" class="zoom-img"
+                                                            src="./images/img-female/{{ $female->image_path }}" />
                                                     </div>
-                                                    <div class="seemore_bt">
-                                                        <a onclick="showModal()">Xem thêm...</a>
+                                                    <div class="btn_main">
+                                                        <div class="buy_bt">
+                                                            <a href="#" data-bs-toggle="modal"
+                                                                data-bs-target="#exampleModal">Mua ngay</a>
+                                                        </div>
+                                                        <div class="seemore_bt">
+                                                            <a onclick="showModal()">Xem thêm...</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -50,82 +53,24 @@
         </div>
 
         <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-       
-        <div id="viewsp" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-3">
-                        <div class="product-main-image">
-                            <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                        </div>
-                        <div class="product-other-images">
-                            <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
-                            <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
-                            <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-9">
-                        <h2>Cool green dress with red bell</h2>
-                        <div class="price-availability-block clearfix">
-                            <div class="price">
-                                <strong><span>$</span>47.00</strong>
-                                <em>$<span>62.00</span></em>
-                            </div>
-                            <div class="availability">
-                                Availability: <strong>In Stock</strong>
-                            </div>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor ut sit ame dolore adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
-                        </div>
-                        <div class="product-page-options">
-                            <div class="pull-left">
-                                <label class="control-label">Size:</label>
-                                <select class="form-control input-sm">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                            </div>
-                            <div class="pull-left">
-                                <label class="control-label">Color:</label>
-                                <select class="form-control input-sm">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                            </div>
-                        </div>
-                        <div class="product-page-cart">
-                            <div class="product-quantity">
-                                <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
-                            </div>
-                            <button class="btn btn-primary" type="submit">Add to cart</button>
-                            <a href="shop-item.html" class="btn btn-default">More details</a>
-                        </div>
+                    <div class="modal-body">
+                        ...
                     </div>
-
-                    <div class="sticker sticker-sale"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </main>
     {{-- end main --}}
 
@@ -138,13 +83,15 @@
     {{-- end link js --}}
 
     <script>
-        function showModal(){
+        function showModal() {
             let x = document.getEmlementByID('viewsp');
-            if(x.style.display === "none"){
+            if (x.style.display === "none") {
                 x.style.display === "block";
             }
         }
     </script>
-  </body>
+</body>
+
 </html>
+
 </html>

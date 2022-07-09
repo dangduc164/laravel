@@ -51,7 +51,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $test = DB::all();
+        return view('welcome', compact('test'));
     }
 
     /**
