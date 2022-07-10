@@ -1,9 +1,13 @@
   <!-- The Modal Female Product-->
   @foreach ($females as $female)
       <div class="modal" id="myModal{{ $female->id }}">
-          <div class="modal-dialog modal-xl modal-fullscreen-xxl-down">
+          <div class="modal-dialog modal-xl">
               <div class="modal-content">
-                  <div class="modal-header"></div>
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
                   <div class="wrap">
                       <div class="row">
                           <div class="col">

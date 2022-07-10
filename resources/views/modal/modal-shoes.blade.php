@@ -1,7 +1,7 @@
  <!-- The Modal Male Product-->
  @foreach ($shoes as $shoe)
-     <div class="modal" id="myModalShoes{{ $shoe->id }}">
-         <div class="modal-dialog modal-xl modal-fullscreen-xxl-down">
+     <div class="modal" id="myModalShoes{{ $shoe->id }}" tabindex="-1">
+         <div class="modal-dialog modal-xl modal-dialog-centered">
              <div class="modal-content">
                  <div class="modal-header"></div>
                  <div class="wrap">
