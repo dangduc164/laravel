@@ -30,18 +30,18 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 a {
     color: #1f1f1f;
     text-decoration: none !important;
     outline: none !important;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 h1,
@@ -57,31 +57,31 @@ h6 {
     font-weight: normal;
     line-height: normal;
     color: #111111;
-    margin: 0
+    margin: 0;
 }
 
 h1 {
-    font-size: 24px
+    font-size: 24px;
 }
 
 h2 {
-    font-size: 22px
+    font-size: 22px;
 }
 
 h3 {
-    font-size: 18px
+    font-size: 18px;
 }
 
 h4 {
-    font-size: 16px
+    font-size: 16px;
 }
 
 h5 {
-    font-size: 14px
+    font-size: 14px;
 }
 
 h6 {
-    font-size: 13px
+    font-size: 13px;
 }
 
 *,
@@ -100,7 +100,7 @@ h5 a,
 h6 a {
     color: #212121;
     text-decoration: none !important;
-    opacity: 1
+    opacity: 1;
 }
 
 button:focus {
@@ -132,11 +132,11 @@ a,
 .btn {
     text-decoration: none !important;
     outline: none !important;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 img {
@@ -170,7 +170,7 @@ img {
 
 .form-control:focus {
     border-color: #674a4a !important;
-    box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
 }
 
 .navbar-form input {
@@ -235,12 +235,11 @@ button {
     position: fixed;
     top: 10px;
     right: 10px;
-    border: 1px solid #00FF00;
+    border: 1px solid #00ff00;
     background-color: blue;
     border-radius: 25px;
     padding: 30px;
     width: 300px;
-
 }
 
 .custom_menu ul {
@@ -366,7 +365,7 @@ button {
     border-color: #30302e;
 }
 
-.show>.btn-secondary.dropdown-toggle:focus {
+.show > .btn-secondary.dropdown-toggle:focus {
     box-shadow: none;
 }
 
@@ -435,7 +434,7 @@ button {
 
 .nav-link {
     display: block;
-    padding: .4rem 1rem;
+    padding: 0.4rem 1rem;
 }
 
 a:hover {
@@ -496,7 +495,7 @@ a:hover {
 #my_slider .carousel-control-prev {
     width: 45px;
     height: 45px;
-    background: rgb(242, 222, 172, 0.80);
+    background: rgb(242, 222, 172, 0.8);
     opacity: 1;
     font-size: 20px;
     color: #000;

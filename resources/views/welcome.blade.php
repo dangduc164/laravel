@@ -10,7 +10,13 @@
 
     {{-- main --}}
     <main>
-
+        {{-- thông báo --}}
+        @if (session('admin'))
+            <div class="alert text-center alert-success h4 text-white" id="alert" role="alert">
+                <h1>{{ session('admin') }}</h1>
+            </div>
+        @endif
+        {{-- end thông báo --}}
         <div class="female" id="female">
             <div class="fashion_section">
                 <div id="main_slider" class="carousel slide" data-ride="carousel">

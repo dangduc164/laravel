@@ -48,6 +48,7 @@
 {{-- <script src="{{assets('')}}"></script> --}}
 <script src="../js/backtop.js"></script>
 <script src="../js/addcart.js"></script>
+
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";

@@ -23,6 +23,7 @@ use App\Http\Controllers\UI\CartController;
 use App\Http\Controllers\UpdateFemaleController;
 use App\Http\Controllers\UpdateMaleController;
 use App\Http\Controllers\UpdateShoesController;
+use App\Http\Middleware\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,9 @@ Route::post('contactui/store', [DemoControll::class, 'store'])->name('contact.st
 
 /*---- render ui ----*/
 Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('welcome');
+Route::get('/duc', function () {
+    return view('welcome');
+})->name('');
 
 Route::get('/maleui', [App\Http\Controllers\UI\MaleController::class, 'index'])->name('maleUI');
 Route::get('/femaleui', [App\Http\Controllers\UI\FemaleController::class, 'index'])->name('femaleUI');
@@ -90,53 +94,56 @@ Route::get('/cartui', [CartController::class, 'index'])->name('cartUI');
 /*-- Admin --*/
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
-Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');
-Route::get('/female', [App\Http\Controllers\FemaleController::class, 'index'])->name('female');
-Route::get('/shoes', [App\Http\Controllers\ShoesController::class, 'index'])->name('shoes');
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
 
 /*-- create product --*/
+Route::group(['middleware' => 'isadmin'], function () {
 
-/** Male product */
-Route::post('/add-spmale', [CreateMaleProductController::class, 'store'])->name('add-male');
-Route::get('/create-maleproduct', [CreateMaleProductController::class, 'index'])->name('create-male');
-/**End Male product */
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+    Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
+    Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');
+    Route::get('/female', [App\Http\Controllers\FemaleController::class, 'index'])->name('female');
+    Route::get('/shoes', [App\Http\Controllers\ShoesController::class, 'index'])->name('shoes');
+    Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
-
-/** Female product */
-Route::post('/add-spfemale', [CreateFemaleProductController::class, 'store'])->name('add-spfemale');
-Route::get('/create-femaleproduct', [CreateFemaleProductController::class, 'index'])->name('create-female');
-/** End Female product */
-
-
-Route::post('/add-spshoes', [CreateShoesProductController::class, 'store'])->name('add-spshoes');
-Route::get('/create-shoes', [CreateShoesProductController::class, 'index'])->name('create-shoes');
-
-/*-- end create product --*/
+    /** Male product */
+    Route::post('/add-spmale', [CreateMaleProductController::class, 'store'])->name('add-male');
+    Route::get('/create-maleproduct', [CreateMaleProductController::class, 'index'])->name('create-male');
+    /**End Male product */
 
 
-/** sửa sản phẩm */
-Route::get('/female/show/{id}', [UpdateFemaleController::class, 'index'])->name('update-spfemale');
-Route::post('/show-female/{id}', [UpdateFemaleController::class, 'update'])->name('show-female');
+    /** Female product */
+    Route::post('/add-spfemale', [CreateFemaleProductController::class, 'store'])->name('add-spfemale');
+    Route::get('/create-femaleproduct', [CreateFemaleProductController::class, 'index'])->name('create-female');
+    /** End Female product */
 
-Route::get('/male/show/{id}', [UpdateMaleController::class, 'index'])->name('update-spmale');
-Route::post('/show-male/{id}', [UpdateMaleController::class, 'update'])->name('show-male');
 
-Route::get('/shoes/show/{id}', [UpdateShoesController::class, 'index'])->name('update-spshoes');
-Route::post('/show-shoes/{id}', [UpdateShoesController::class, 'update'])->name('show-shoes');
+    Route::post('/add-spshoes', [CreateShoesProductController::class, 'store'])->name('add-spshoes');
+    Route::get('/create-shoes', [CreateShoesProductController::class, 'index'])->name('create-shoes');
 
-/** end sửa sản phẩm */
+    /*-- end create product --*/
 
-/** delete */
-Route::DELETE('/layouts/contact/delete/{id}', [ContactController::class, 'destroy'])->name('delete-contact');
-Route::DELETE('/layouts/female/delete/{id}', [Female_productController::class, 'destroy'])->name('delete-female');
-// Route::DELETE('/layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
-Route::DELETE('layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
-Route::DELETE('layouts/shoes/delete/{id}', [ShoesController::class, 'destroy'])->name('delete-shoes');
 
-/** end delete */
+    /** sửa sản phẩm */
+    Route::get('/female/show/{id}', [UpdateFemaleController::class, 'index'])->name('update-spfemale');
+    Route::post('/show-female/{id}', [UpdateFemaleController::class, 'update'])->name('show-female');
 
-/* end Admin */
+    Route::get('/male/show/{id}', [UpdateMaleController::class, 'index'])->name('update-spmale');
+    Route::post('/show-male/{id}', [UpdateMaleController::class, 'update'])->name('show-male');
+
+    Route::get('/shoes/show/{id}', [UpdateShoesController::class, 'index'])->name('update-spshoes');
+    Route::post('/show-shoes/{id}', [UpdateShoesController::class, 'update'])->name('show-shoes');
+
+    /** end sửa sản phẩm */
+
+    /** delete */
+    Route::DELETE('/layouts/contact/delete/{id}', [ContactController::class, 'destroy'])->name('delete-contact');
+    Route::DELETE('/layouts/female/delete/{id}', [Female_productController::class, 'destroy'])->name('delete-female');
+    // Route::DELETE('/layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
+    Route::DELETE('layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
+    Route::DELETE('layouts/shoes/delete/{id}', [ShoesController::class, 'destroy'])->name('delete-shoes');
+
+    /** end delete */
+
+    /* end Admin */
+});

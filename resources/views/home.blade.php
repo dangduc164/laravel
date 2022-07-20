@@ -1,7 +1,10 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 
-@section('content')
-    <div class="container-fluid">
-        <h1 class="text-black-50">You are logged in!</h1>
+{{-- @section('content') --}}
+
+@if (session('admin'))
+    <div class="alert alert-danger">
+        <p class="text-center">{{ session('admin') }}</p>
     </div>
-@endsection
+@endif
+{{-- @endsection --}}
