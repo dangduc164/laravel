@@ -94,6 +94,9 @@ Route::post('/contactuisubmit', [App\Http\Controllers\UI\ContactController::clas
 Route::get('/contactui', [App\Http\Controllers\UI\ContactController::class, 'index'])->name('contactUI');
 
 Route::get('/cartui', [ProductsController::class, 'showcart'])->name('cartUI');
+Route::post('/updateItem/{id}', [ProductsController::class, 'updataItem'])->name('updateItem');
+
+
 
 /*-- Admin --*/
 Auth::routes();

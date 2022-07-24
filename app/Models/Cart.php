@@ -16,6 +16,12 @@ class Cart extends Model
         'content',
         'amount',
         'size',
+        'phone',
 
     ];
+
+    static function newItem($resquest, $id)
+    {
+        Cart::where('id', $id)->update($resquest);
+    }
 }

@@ -15,26 +15,26 @@
                               <div class="col">
                                   <div class="content-product">
                                       <div class="title-product">
-                                          <label for="name" class="fw-bold text-warning h3">Tên sản phẩm:</label>
-                                          <p class="text-center h4">{{ $female->name }}</p>
+                                          <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
+                                          <p class="text-center h5">{{ $female->name }}</p>
                                       </div>
                                       <div class="price">
-                                          <label for="price" class="fw-bold text-warning h3">Giá:</label>
-                                          <p class="text-center h4 fw-bold">$ {{ $female->price }}</p>
+                                          <label for="price" class="fw-bold text-warning h5">Giá:</label>
+                                          <p class="text-center h5 fw-bold">$ {{ $female->price }}</p>
                                       </div>
                                       <div class="comment">
-                                          <label for="content" class="fw-bold text-warning h3">Mô tả sẳn phẩm:</label>
+                                          <label for="content" class="fw-bold text-warning h5">Mô tả sẳn phẩm:</label>
                                           <p class="fw-normal text-dark fs-6">{{ $female->content }}</p>
                                       </div>
 
                                       <div class="sl">
-                                          <label for="amount" class="text-warning h3 fw-bold">số lượng:</label>
+                                          <label for="amount" class="text-warning h5 fw-bold">số lượng:</label>
                                           <br>
                                           <input type="number" name="amount" value="1" class="ml-2 p-1" />
 
                                       </div>
                                       <div class="size-product">
-                                          <label for="size" class="text-warning h3 fw-bold">Size:</label>
+                                          <label for="size" class="text-warning h5 fw-bold">Size:</label>
                                           <br>
                                           <select name="size" id="size" style="width: 30%" class="ml-2 p-2">
                                               <option value="xs">xs</option>
@@ -44,6 +44,12 @@
                                               <option value="xl">xl</option>
                                               <option value="xxl">xxl</option>
                                           </select>
+                                      </div>
+
+                                      <div class="info">
+                                          <label for="phone" class="text-warning h5 fw-bold">Số điện thoại:</label>
+                                          <br>
+                                          <input type="number" name="phone">
                                       </div>
                                       <div class="btn-group pt-3">
 

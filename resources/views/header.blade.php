@@ -100,12 +100,13 @@
                         <ul>
                             <li>
                                 <a href="{{ route('cartUI') }}"><input type="button" value="Giỏ Hàng"
-                                        class="btn btn-outline-danger text-white" /></a>
+                                        class="btn btn-outline-danger text-white" />
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('login') }}"><input type="button" value="Đăng Nhập"
-                                        class="btn btn-outline-danger text-white" /></a>
-
+                                        class="btn btn-outline-danger text-white" />
+                                </a>
                             </li>
                         </ul>
                     </div>
