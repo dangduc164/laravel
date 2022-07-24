@@ -78,9 +78,13 @@ Route::post('contactui/store', [DemoControll::class, 'store'])->name('contact.st
 
 /*---- render ui ----*/
 Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('welcome');
-Route::get('/duc', function () {
-    return view('welcome');
-})->name('');
+// Route::get('/duc', function () {
+//     return view('welcome');
+// })->name('');
+
+/** thêm sản phẩm vào giỏ hàng */
+Route::post('/addcart/{id}', [App\Http\Controllers\ProductsController::class, 'addcart'])->name('addcart');
+
 
 Route::get('/maleui', [App\Http\Controllers\UI\MaleController::class, 'index'])->name('maleUI');
 Route::get('/femaleui', [App\Http\Controllers\UI\FemaleController::class, 'index'])->name('femaleUI');
@@ -89,7 +93,7 @@ Route::get('/shoesui', [App\Http\Controllers\UI\ShoesController::class, 'index']
 Route::post('/contactuisubmit', [App\Http\Controllers\UI\ContactController::class, 'store'])->name('contactUIsubmit');
 Route::get('/contactui', [App\Http\Controllers\UI\ContactController::class, 'index'])->name('contactUI');
 
-Route::get('/cartui', [CartController::class, 'index'])->name('cartUI');
+Route::get('/cartui', [ProductsController::class, 'showcart'])->name('cartUI');
 
 /*-- Admin --*/
 Auth::routes();
@@ -99,7 +103,7 @@ Auth::routes();
 /*-- create product --*/
 Route::group(['middleware' => 'isadmin'], function () {
 
-    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
     Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');
     Route::get('/female', [App\Http\Controllers\FemaleController::class, 'index'])->name('female');

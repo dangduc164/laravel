@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Cart;
+use App\Models\Male_product;
 
 class ProductsController extends Controller
 {
@@ -87,5 +89,32 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addcart(Request $request, $id)
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            $product = Male_product::find($id);
+            $cart = new cart;
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->name = $product->name;
+            $cart->price = $product->price;
+            $cart->content = $product->content;
+            $cart->image_path = $product->image_path;
+            $cart->amount = $request->amount;
+            $cart->size = $request->size;
+            // dd($cart);
+            $cart->save();
+            return redirect()->back();
+        } else {
+            return redirect('login');
+        }
+    }
+    public function showcart()
+    {
+        $shows = DB::table('carts')->get();
+        return view('cart', compact('shows'));
     }
 }
