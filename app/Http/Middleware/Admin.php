@@ -21,6 +21,8 @@ class Admin
 
             return $next($request);
         }
-        return redirect('/')->with('admin', 'bạn không có quyền truy cập!');
+        return redirect('/')
+            //->with('admin', 'bạn không có quyền truy cập!')
+        ;
     }
 }
