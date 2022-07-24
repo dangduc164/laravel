@@ -55,18 +55,26 @@
                                         {{ $show->size }}
                                     </td>
                                     <td class="text-center">$ {{ $show->price }}</td>
-                                    <td>
-                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                                    <td style="display: flex; gap: 5px;justify-content: center">
+                                        {{-- cập nhật thông tin sp --}}
                                         <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
                                             data-bs-toggle="modal" data-bs-target="#myModal{{ $show->id }}">
                                             <i class="fa-solid fa-pen-alt"></i>
                                         </a>
-                                        {{-- cập nhật thông tin sp --}}
-                                        <a id="btnDelete" name="btnDelete" class="btn btn-danger" href="#">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </a>
+
+                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                                        <form method="post" action="{{ route('deleteItem', ['id' => $show->id]) }}"
+                                            onsubmit="returnConfirmDeletr(this)">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" class="btn btn-danger" value="xóa">
+                                        </form>
+
                                         {{-- btn order --}}
-                                        <input type="submit" class="btn btn-success" value="Đặt hàng" />
+                                        <form method="post" action="{{ route('orderItem', ['id' => $show->id]) }}">
+                                            @csrf
+                                            <input type="submit" class="btn btn-success" value="Đặt hàng" />
+                                        </form>
                                     </td>
                                 </tr>
 

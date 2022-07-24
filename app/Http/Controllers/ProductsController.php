@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use App\Models\Male_product;
+use App\Models\Order;
 use Exception;
 
 class ProductsController extends Controller
@@ -133,5 +134,30 @@ class ProductsController extends Controller
         } catch (Exception $ex) {
             throw $ex;
         }
+    }
+    public function dltItem($id)
+    {
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->route('cartUI')->with('success', 'Xóa thông tin liên hệ thành công!');
+    }
+    public function orderItem(Request $request, $id)
+    {
+        // $user = auth()->user();
+        // $product = Cart::find($id);
+        // $order = new order;
+        // $order->name = $user->name;
+        // $order->email = $user->email;
+        // $order->name = $product->name;
+        // $order->price = $product->price;
+        // $order->content = $product->content;
+        // $order->image_path = $product->image_path;
+        // $order->amount = $request->amount;
+        // $order->size = $request->size;
+        // $order->phone = $request->phone;
+        // $item_id = DB::table('carts')->get('id');
+        $orders = Cart::find($id);
+        //dd($orders);
+        return view('layouts.order', compact('orders'));
     }
 }
