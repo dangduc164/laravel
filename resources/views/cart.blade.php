@@ -65,6 +65,8 @@
                                         <a id="btnDelete" name="btnDelete" class="btn btn-danger" href="#">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
+                                        {{-- btn order --}}
+                                        <input type="submit" class="btn btn-success" value="Đặt hàng" />
                                     </td>
                                 </tr>
 
@@ -98,9 +100,6 @@
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-
-
-
                                                     <input type="submit" class="btn btn-success" value="Cập nhật">
 
                                                     {{-- <button type="button" class="btn btn-success"
@@ -117,7 +116,7 @@
 
                     <div class="priceSum text-end">
                         <h2 class="h3 text-end">Tổng tiền: <span class="ml-3">$ {{ $total }}</span> </h2>
-                        <input type="submit" class="btn btn-success p-3" value="Đặt hàng" />
+                        {{-- <input type="submit" class="btn btn-success p-3" value="Đặt hàng" /> --}}
                     </div>
 
                     <a href="{{ route('welcome') }}" class="btn btn-warning btn-md">

@@ -17,6 +17,7 @@ class Cart extends Model
         'amount',
         'size',
         'phone',
+        // 'status',
 
     ];
 
