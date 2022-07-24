@@ -7,12 +7,12 @@
                       @csrf
                       <div class="wrap">
                           <div class="row">
-                              <div class="col">
+                              <div class="col-12 col-md-6">
                                   <div class="img-product">
                                       <img class="img-modal" src="./images/img-female/{{ $female->image_path }}" />
                                   </div>
                               </div>
-                              <div class="col">
+                              <div class="col-12 col-md-6">
                                   <div class="content-product">
                                       <div class="title-product">
                                           <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
@@ -52,13 +52,7 @@
                                           <input type="number" name="phone">
                                       </div>
                                       <div class="btn-group pt-3">
-
                                           <input type="submit" value="Thêm vào giở hàng" class="btn btn-warning">
-
-
-
-                                          {{-- <a href="" class="btn btn-warning">Thêm vào giỏ
-                                          hàng</a> --}}
                                       </div>
                                   </div>
                               </div>

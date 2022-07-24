@@ -1,36 +1,40 @@
  <!-- The Modal Male Product-->
  @foreach ($shoes as $shoe)
      <div class="modal" id="myModalShoes{{ $shoe->id }}" tabindex="-1">
-         <div class="modal-dialog modal-xl modal-dialog-centered">
+         <div class="modal-dialog modal-xl">
              <div class="modal-content">
-                 <div class="modal-header"></div>
                  <div class="wrap">
                      <div class="row">
-                         <div class="col">
+                         <div class="col-12 col-md-6">
                              <div class="img-product">
                                  <img class="img-modal" src="./images/img-shoes/{{ $shoe->image_path }}" />
                              </div>
                          </div>
-                         <div class="col">
+                         <div class="col-12 col-md-6">
                              <div class="content-product">
                                  <div class="title-product">
-                                     <h2>{{ $shoe->name }}</h2>
+                                     <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
+                                     <p class="text-center h5">{{ $shoe->name }}</p>
                                  </div>
                                  <div class="price">
-                                     <h4>{{ $shoe->price }}</h4>
+                                     <label for="price" class="fw-bold text-warning h5">Giá:</label>
+                                     <p class="text-center h5 fw-bold">$ {{ $shoe->price }}</p>
                                  </div>
                                  <div class="comment">
-                                     <p>{{ $shoe->content }}</p>
+                                     <label for="content" class="fw-bold text-warning h5">Mô tả sẳn phẩm:</label>
+                                     <p class="fw-normal text-dark fs-6">{{ $shoe->content }}</p>
                                  </div>
 
                                  <div class="sl">
-                                     <label for="">số lượng</label>
-                                     <input type="number" value="1" />
+                                     <label for="amount" class="text-warning h5 fw-bold">số lượng:</label>
+                                     <br>
+                                     <input type="number" name="amount" value="1" class="ml-2 p-1" />
 
                                  </div>
                                  <div class="size-product">
-                                     <label>Size</label>
-                                     <select name="size" id="size" style="width: 90%">
+                                     <label for="size" class="text-warning h5 fw-bold">Size:</label>
+                                     <br>
+                                     <select name="size" id="size" style="width: 30%" class="ml-2 p-2">
                                          <option value="xs">xs</option>
                                          <option value="s">s</option>
                                          <option value="m">m</option>
@@ -39,9 +43,13 @@
                                          <option value="xxl">xxl</option>
                                      </select>
                                  </div>
+                                 <div class="info">
+                                     <label for="phone" class="text-warning h5 fw-bold">Số điện thoại:</label>
+                                     <br>
+                                     <input type="number" name="phone">
+                                 </div>
                                  <div class="btn-group pt-3">
-                                     <a href="" class="btn btn-warning">Thêm vào giỏ
-                                         hàng</a>
+                                     <input type="submit" value="Thêm vào giở hàng" class="btn btn-warning">
                                  </div>
                              </div>
                          </div>

@@ -230,6 +230,9 @@ button {
     margin: 0 auto;
     text-align: center;
 }
+.modal-content {
+    padding: 24px;
+}
 
 .success {
     position: fixed;
@@ -662,6 +665,7 @@ a:hover {
     text-align: center;
     margin: 50px 0px;
     min-height: 293px;
+    overflow: hidden;
 }
 
 #electronic_main_slider a.carousel-control-next {
@@ -703,6 +707,7 @@ a:hover {
     text-align: center;
     margin: 50px 0px;
     min-height: 293px;
+    overflow: hidden;
 }
 
 #jewellery_main_slider a.carousel-control-next {
