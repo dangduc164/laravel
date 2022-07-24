@@ -3,11 +3,6 @@
       <div class="modal" id="myModal{{ $female->id }}">
           <div class="modal-dialog modal-xl">
               <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
                   <div class="wrap">
                       <div class="row">
                           <div class="col">
@@ -18,23 +13,26 @@
                           <div class="col">
                               <div class="content-product">
                                   <div class="title-product">
-                                      <h2>{{ $female->name }}</h2>
+                                      <label for="name" class="text-warning h3">Tên sản phẩm:</label>
+                                      <p class="text-center h4">{{ $female->name }}</p>
                                   </div>
-                                  <div class="price">
-                                      <h4>{{ $female->price }}</h4>
+                                  <div class="price pt-4">
+                                      <label for="[rice" class="text-warning h3">Giá:</label>
+                                      <p class="text-center h4">$ {{ $female->price }}</p>
                                   </div>
                                   <div class="comment">
-                                      <p>{{ $female->content }}</p>
+                                      <label for="comment" class="text-warning h3">Mô tả sản phẩm:</label>
+                                      <p class="fw-normal">{{ $female->content }}</p>
                                   </div>
 
                                   <div class="sl">
-                                      <label for="">số lượng</label>
+                                      <label for="number" class="text-warning h3">Số lượng:</label>
                                       <input type="number" value="1" />
 
                                   </div>
-                                  <div class="size-product">
-                                      <label>Size</label>
-                                      <select name="size" id="size" style="width: 90%">
+                                  <div class="size-product pt-3">
+                                      <label class="text-warning h3">Size:</label>
+                                      <select name="size" id="size" style="width: 30%">
                                           <option value="xs">xs</option>
                                           <option value="s">s</option>
                                           <option value="m">m</option>
@@ -44,8 +42,14 @@
                                       </select>
                                   </div>
                                   <div class="btn-group pt-3">
-                                      <a href="" class="btn btn-warning">Thêm vào giỏ
-                                          hàng</a>
+                                      <form action="{{ url('addcart', $female->id) }}" method="POST">
+                                          @csrf
+                                          <input type="submit" value="Thêm sản phẩm vào giỏ hàng"
+                                              class="btn btn-warning">
+                                      </form>
+                                      {{-- <a onclick="addCart()" class="btn btn-warning">Thêm vào giỏ
+                                          hàng
+                                      </a> --}}
                                   </div>
                               </div>
                           </div>

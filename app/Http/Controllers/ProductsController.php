@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -87,5 +88,14 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addcart(Request $request, $id)
+    {
+        if (Auth::check()) {
+            return redirect()->back();
+        } else {
+            return redirect('/login');
+        }
     }
 }

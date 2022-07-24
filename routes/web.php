@@ -44,6 +44,10 @@ use App\Http\Middleware\Admin;
 // Route::get('/', [Female_productController::class, 'index']);
 Route::get('/', [ProductsController::class, 'index']);
 
+// thêm sản phẩm vào giỏ hàng
+Route::post('/addcart/{id}', [ProductsController::class, 'addcart'])->name('addcart');
+
+
 
 /*---- Admin -----*/
 
