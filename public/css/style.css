@@ -559,13 +559,14 @@ a:hover {
     text-align: center;
     margin: 50px 0px;
     min-height: 370px;
+    overflow: hidden;
 }
 
 .zoom-img {
-    transition: all 1.5s ease;
-    -webkit-transition: all 1.5s ease;
-    -moz-transition: all 1.5s ease;
-    -o-transition: all 1.5s ease;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 .zoom-img:hover {

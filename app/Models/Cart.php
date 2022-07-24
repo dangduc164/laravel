@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'image_path',
+        'name',
+        'price',
+        'content',
+        'amount',
+        'size',
+        'phone',
+
+    ];
+
+    static function newItem($resquest, $id)
+    {
+        Cart::where('id', $id)->update($resquest);
+    }
 }

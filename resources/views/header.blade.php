@@ -42,7 +42,20 @@
                     <a href="{{ route('maleUI') }}">Đồ Thể Thao Nam</a>
                     <a href="{{ route('shoesUI') }}">Giầy Thể Thao</a>
                     <a href="{{ route('contactUI') }}">Liên Hệ</a>
-                    <a href="{{route('login')}}">Đăng Nhập</a>
+                    <a href="{{ route('login') }}">Đăng Nhập</a>
+                    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Sign out
+                    </a>
+
+                    <li class="user-footer">
+                        {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+
 
                 </div>
                 <span class="toggle_icon" onclick="openNav()"><i class="fas fa-bars fa-3x"></i></span>
@@ -87,12 +100,13 @@
                         <ul>
                             <li>
                                 <a href="{{ route('cartUI') }}"><input type="button" value="Giỏ Hàng"
-                                        class="btn btn-outline-danger text-white" /></a>
+                                        class="btn btn-outline-danger text-white" />
+                                </a>
                             </li>
                             <li>
-                                <a href="./dangnhap.html"><input type="button" value="Đăng Nhập"
-                                        class="btn btn-outline-danger text-white" /></a>
-
+                                <a href="{{ route('login') }}"><input type="button" value="Đăng Nhập"
+                                        class="btn btn-outline-danger text-white" />
+                                </a>
                             </li>
                         </ul>
                     </div>

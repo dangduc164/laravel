@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\UI\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Cart;
+use App\Models\Male_product;
+use Exception;
 
 class ProductsController extends Controller
 {
@@ -93,9 +96,42 @@ class ProductsController extends Controller
     public function addcart(Request $request, $id)
     {
         if (Auth::check()) {
+            $user = auth()->user();
+            $product = Male_product::find($id);
+            $cart = new cart;
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->name = $product->name;
+            $cart->price = $product->price;
+            $cart->content = $product->content;
+            $cart->image_path = $product->image_path;
+            $cart->amount = $request->amount;
+            $cart->size = $request->size;
+            $cart->phone = $request->phone;
+            // dd($cart);
+            $cart->save();
             return redirect()->back();
         } else {
-            return redirect('/login');
+            return redirect('login');
+        }
+    }
+    public function showcart()
+    {
+        $email_user = Auth::user()->email;
+        // dd($email_user);
+        $shows = DB::table('carts')->where('email', $email_user)->get();
+        // dd($shows);
+        return view('cart', compact('shows'));
+    }
+
+    public function updataItem(Request $request, $id)
+    {
+        $input = $request->except(['_token']);;
+        try {
+            Cart::newItem($input, $id);
+            return redirect()->route('cartUI')->with('success', 'Cập nhật thành công!');
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 }

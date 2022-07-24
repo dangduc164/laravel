@@ -30,6 +30,5 @@ class Female_product extends Model
     static function upd($resquest, $id)
     {
         Female_product::where('id', $id)->update($resquest);
-        return true;
     }
 }
