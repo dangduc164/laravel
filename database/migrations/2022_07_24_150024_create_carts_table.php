@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('comment');
             $table->integer('amount');
             $table->string('size');
+            $table->string('type');
             // $table->integer('status');
             $table->timestamps();
         });

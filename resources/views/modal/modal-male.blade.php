@@ -14,6 +14,11 @@
                              </div>
                              <div class="col-12 col-md-6">
                                  <div class="content-product">
+                                     <div class="type-product">
+                                         <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
+                                             <span class="text-dark" name="type">nam</span>
+                                         </label>
+                                     </div>
                                      <div class="title-product">
                                          <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
                                          <p class="text-center h5">{{ $male->name }}</p>

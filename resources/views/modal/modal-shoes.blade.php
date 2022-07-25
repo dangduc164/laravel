@@ -12,6 +12,11 @@
                          </div>
                          <div class="col-12 col-md-6">
                              <div class="content-product">
+                                 <div class="type-product">
+                                     <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
+                                         <span class="text-dark" name="type">giày</span>
+                                     </label>
+                                 </div>
                                  <div class="title-product">
                                      <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
                                      <p class="text-center h5">{{ $shoe->name }}</p>
@@ -29,18 +34,17 @@
                                      <label for="amount" class="text-warning h5 fw-bold">số lượng:</label>
                                      <br>
                                      <input type="number" name="amount" value="1" class="ml-2 p-1" />
-
                                  </div>
                                  <div class="size-product">
                                      <label for="size" class="text-warning h5 fw-bold">Size:</label>
                                      <br>
                                      <select name="size" id="size" style="width: 30%" class="ml-2 p-2">
-                                         <option value="xs">xs</option>
-                                         <option value="s">s</option>
-                                         <option value="m">m</option>
-                                         <option value="l">l</option>
-                                         <option value="xl">xl</option>
-                                         <option value="xxl">xxl</option>
+                                         <option value="37">37</option>
+                                         <option value="38">38</option>
+                                         <option value="39">39</option>
+                                         <option value="40">40</option>
+                                         <option value="41">41</option>
+                                         <option value="42">42</option>
                                      </select>
                                  </div>
                                  <div class="info">

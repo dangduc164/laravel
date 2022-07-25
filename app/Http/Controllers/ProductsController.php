@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use App\Models\Male_product;
 use App\Models\Order;
+use App\Models\Order_product;
 use Exception;
 
 class ProductsController extends Controller
@@ -109,6 +110,7 @@ class ProductsController extends Controller
             $cart->amount = $request->amount;
             $cart->size = $request->size;
             $cart->phone = $request->phone;
+            $cart->type = $request->type;
             // dd($cart);
             $cart->save();
             return redirect()->back();
@@ -118,6 +120,7 @@ class ProductsController extends Controller
     }
     public function showcart()
     {
+        //show sản phẩm thêm vào giỏ hàng theo user_email
         $email_user = Auth::user()->email;
         // dd($email_user);
         $shows = DB::table('carts')->where('email', $email_user)->get();
@@ -127,6 +130,7 @@ class ProductsController extends Controller
 
     public function updataItem(Request $request, $id)
     {
+        //sửa số lượng size trong giỏ hàng
         $input = $request->except(['_token']);;
         try {
             Cart::newItem($input, $id);
@@ -139,25 +143,32 @@ class ProductsController extends Controller
     {
         $cart = Cart::find($id);
         $cart->delete();
-        return redirect()->route('cartUI')->with('success', 'Xóa thông tin liên hệ thành công!');
+        return redirect()->route('cartUI')->with('success', 'Xóa sản phẩm thành công!');
     }
     public function orderItem(Request $request, $id)
     {
-        // $user = auth()->user();
-        // $product = Cart::find($id);
-        // $order = new order;
+        $user = auth()->user();
+        $product = Cart::find($id);
+        $order = new order_product;
         // $order->name = $user->name;
-        // $order->email = $user->email;
-        // $order->name = $product->name;
-        // $order->price = $product->price;
+        $order->userName = $user->name;
+        $order->email = $user->email;
+        $order->nameItem = $product->name;
+        $order->price = $product->price;
         // $order->content = $product->content;
-        // $order->image_path = $product->image_path;
-        // $order->amount = $request->amount;
-        // $order->size = $request->size;
-        // $order->phone = $request->phone;
-        // $item_id = DB::table('carts')->get('id');
-        $orders = Cart::find($id);
-        //dd($orders);
-        return view('layouts.order', compact('orders'));
+        $order->image_path = $product->image_path;
+        $order->amount = $product->amount;
+        $order->size = $product->size;
+        $order->phone = $product->phone;
+        $order->type = $product->type;
+        $order->save();
+        // Order::newOrder($newOrder);
+        // return view('cart');
+        return redirect()->route('cartUI')->with('success', 'Đặt hàng thành công!');
+    }
+    public function showOrder()
+    {
+        $item_gs = DB::table('order_products')->where('type', 'nữ')->get();
+        return view('layouts.order', compact('item_gs'));
     }
 }

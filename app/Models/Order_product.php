@@ -5,25 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Order_product extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'image_path',
-        'name',
+
+        'userName',
+        'email',
+        'nameItem',
         'price',
-        'content',
+        'image_path',
         'amount',
         'size',
         'phone',
         'type',
+        // 'map',
+        // 'content'
         // 'status',
 
     ];
 
-    static function newItem($resquest, $id)
+    static function newOrder($resquest)
     {
-        Cart::where('id', $id)->update($resquest);
+        Order_product::create($resquest);
+        dd($resquest);
     }
 }

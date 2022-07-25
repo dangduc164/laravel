@@ -116,7 +116,7 @@ Auth::routes();
 Route::group(['middleware' => 'isadmin'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
+    Route::get('/order', [App\Http\Controllers\ProductsController::class, 'showOrder'])->name('order');
     Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');
     Route::get('/female', [App\Http\Controllers\FemaleController::class, 'index'])->name('female');
     Route::get('/shoes', [App\Http\Controllers\ShoesController::class, 'index'])->name('shoes');
