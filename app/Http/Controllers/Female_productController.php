@@ -82,6 +82,8 @@ class Female_productController extends Controller
      */
     public function destroy($id)
     {
-        Female_product::find($id)->destroy();
+        $female = Female_product::find($id);
+        $female->delete();
+        return redirect()->route('contact')->with('delete', 'Xóa thành công!');
     }
 }

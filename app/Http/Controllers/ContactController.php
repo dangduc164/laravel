@@ -85,6 +85,6 @@ class ContactController extends Controller
     {
         $contacts = Contact::find($id);
         $contacts->delete();
-        return redirect()->route('contact')->with('success', 'Xóa thông tin liên hệ thành công!');
+        return redirect()->route('contact')->with('delete', 'Xóa thông tin liên hệ thành công!');
     }
 }

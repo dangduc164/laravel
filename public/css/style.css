@@ -159,7 +159,42 @@ img {
     padding: 12px 40px;
     font-size: 16px;
 }
-
+div.add {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    padding: 20px;
+    border-radius: 30px;
+    background: #59e66c;
+    color: #fff;
+}
+div.delete {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    padding: 20px;
+    border-radius: 30px;
+    background: #ee7484;
+    color: #fff;
+}
+div.layoutdelte {
+    position: fixed;
+    bottom: 40px;
+    right: 0;
+    padding: 20px;
+    border-radius: 30px;
+    background: #ee7484;
+    color: #fff;
+}
+div.layoutsAdd {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    padding: 20px;
+    border-radius: 30px;
+    background: #59e66c;
+    color: #fff;
+}
 .lead {
     font-size: 18px;
     line-height: 30px;
@@ -232,17 +267,6 @@ button {
 }
 .modal-content {
     padding: 24px;
-}
-
-.success {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    border: 1px solid #00ff00;
-    background-color: blue;
-    border-radius: 25px;
-    padding: 30px;
-    width: 300px;
 }
 
 .custom_menu ul {

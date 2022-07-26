@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+            <a href="{{ url('/') }}"><span class="text-warning h1 fw-bold">ĐQ.Shop</span></a>
         </div>
         <!-- /.login-logo -->
 

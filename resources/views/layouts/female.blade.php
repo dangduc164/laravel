@@ -7,8 +7,13 @@
 
             {{-- thông báo --}}
             @if (session('success'))
-                <div class="alert alert-success h4 text-white" id="alert" role="alert">
+                <div class="alert alert-success layoutAdd h4 text-white" id="alert" role="alert">
                     {{ session('success') }}
+                </div>
+            @endif
+            @if (session('delete'))
+                <div class="alert alert-success layoutdelete h4 text-white" id="alert" role="alert">
+                    {{ session('delete') }}
                 </div>
             @endif
             {{-- end thông báo --}}

@@ -20,7 +20,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+            <a href="{{ url('/') }}"><span class="text-warning h1 fw-bold">ĐQ.Shop</span></a>
         </div>
 
         <div class="card">
@@ -29,11 +29,7 @@
 
                 <form method="post" action="{{ route('register') }}">
                     @csrf
-<<<<<<< HEAD
-
-=======
                     {{-- name --}}
->>>>>>> master
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             value="{{ old('name') }}" placeholder="Full name">
@@ -47,10 +43,7 @@
                         @enderror
                     </div>
 
-<<<<<<< HEAD
-=======
                     {{-- nhập email --}}
->>>>>>> master
                     <div class="input-group mb-3">
                         <input type="email" name="email" value="{{ old('email') }}"
                             class="form-control @error('email') is-invalid @enderror" placeholder="Email">
@@ -64,10 +57,7 @@
                         @enderror
                     </div>
 
-<<<<<<< HEAD
-=======
                     {{-- pass --}}
->>>>>>> master
                     <div class="input-group mb-3">
                         <input type="password" name="password"
                             class="form-control @error('password') is-invalid @enderror" placeholder="Password">

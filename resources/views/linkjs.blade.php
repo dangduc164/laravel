@@ -66,3 +66,12 @@
         $(this).css("z-index", parseInt($('.modal-backdrop').css('z-index')) + 1);
     });
 </script>
+
+{{-- ẩn aler --}}
+<script>
+    const myTimeout = setTimeout(myGreeting, 2500);
+
+    function myGreeting() {
+        document.getElementById("alert").style.display = 'none';
+    }
+</script>

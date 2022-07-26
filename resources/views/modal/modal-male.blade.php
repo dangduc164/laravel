@@ -9,7 +9,7 @@
                          <div class="row">
                              <div class="col-12 col-md-6">
                                  <div class="img-product">
-                                     <img class="img-modal" src="./images/img-male/{{ $male->image_path }}" />
+                                     <img class="img-modal" src="./images/products/{{ $male->image_path }}" />
                                  </div>
                              </div>
                              <div class="col-12 col-md-6">

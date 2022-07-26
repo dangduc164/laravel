@@ -167,7 +167,7 @@ class ProductsController extends Controller
     {
         $cart = Cart::find($id);
         $cart->delete();
-        return redirect()->route('cartUI')->with('success', 'Xóa sản phẩm thành công!');
+        return redirect()->route('cartUI')->with('delete', 'Xóa sản phẩm thành công!');
     }
     public function orderItem(Request $request, $id)
     {
@@ -193,6 +193,7 @@ class ProductsController extends Controller
     public function showOrder()
     {
         $item_gs = DB::table('order_products')->where('type', 'nữ')->get();
-        return view('layouts.order', compact('item_gs'));
+        $item_bs = DB::table('order_products')->where('type', 'nam')->get();
+        return view('layouts.order', compact('item_gs', 'item_bs'));
     }
 }

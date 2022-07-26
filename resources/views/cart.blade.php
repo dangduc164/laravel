@@ -15,6 +15,25 @@
 
         <div class="container">
             <div class="text-danger py-5 h1"><b> Giỏ hàng</b></div>
+            {{-- thông báo --}}
+            @if (session('success'))
+                <div class="alert alert-success add h4 text-white" id="alert" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                        <use xlink:href="#check-circle-fill" />
+                    </svg>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('delete'))
+                <div class="alert alert-success delete add h4 text-white" id="alert" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                        aria-label="Success:">
+                        <use xlink:href="#check-circle-fill" />
+                    </svg>
+                    {{ session('delete') }}
+                </div>
+            @endif
+            {{-- end thông báo --}}
             <div class="row pb-16">
                 <div class="col-12 col-12 col-md-12 pb-5">
                     <table class="table table-bordered text-center">
@@ -41,8 +60,8 @@
                                 <tr>
                                     <td>{{ $show->id }}</td>
                                     <td>
-                                        <img src="./images/products/{{ $show->image_path }}" width="150px" height="150px"
-                                            class="hinhdaidien" />
+                                        <img src="./images/products/{{ $show->image_path }}" width="150px"
+                                            height="150px" class="hinhdaidien" />
                                     </td>
                                     <td>{{ $show->name }}</td>
 

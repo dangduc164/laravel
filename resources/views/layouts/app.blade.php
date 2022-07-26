@@ -79,9 +79,6 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
-            </div>
             <strong>Copyright &copy; 2022 <a href="https://www.facebook.com/ducden.164">Đăng Đức</a>.</strong>
         </footer>
     </div>
