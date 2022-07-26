@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Female_product;
+use App\Models\Male_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -97,6 +98,8 @@ class FemaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $female = Male_product::find($id);
+        $female->delete();
+        return redirect()->route('female')->with('delete', 'Xóa thành công!');
     }
 }

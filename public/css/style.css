@@ -167,6 +167,7 @@ div.add {
     border-radius: 30px;
     background: #59e66c;
     color: #fff;
+    z-index: 10;
 }
 div.delete {
     position: fixed;
@@ -176,8 +177,9 @@ div.delete {
     border-radius: 30px;
     background: #ee7484;
     color: #fff;
+    z-index: 10;
 }
-div.layoutdelte {
+div.layoutdelete {
     position: fixed;
     bottom: 40px;
     right: 0;
@@ -185,6 +187,7 @@ div.layoutdelte {
     border-radius: 30px;
     background: #ee7484;
     color: #fff;
+    z-index: 10;
 }
 div.layoutsAdd {
     position: fixed;
@@ -194,6 +197,7 @@ div.layoutsAdd {
     border-radius: 30px;
     background: #59e66c;
     color: #fff;
+    z-index: 10;
 }
 .lead {
     font-size: 18px;

@@ -30,20 +30,23 @@
          @endif
          {{-- end thông báo --}}
 
-         <div class="container-fluid">
-             <div class="hanldeBtnCreateMale">
+         <div class="hanldeBtnCreateMale">
+             <div class="container-fluid">
                  <button class="btn btn-success">
                      <a class="text-white" href={{ route('create-male') }}>
                          <i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm mới
                      </a>
                  </button>
              </div>
-             <table class="table border">
+         </div>
+         <div class="container-fluid" style="overflow-x: scroll">
+             <table class="table border text-center">
                  <thead class="bg-warning">
                      <tr>
                          <th scope="col">id</th>
                          <th scope="col">Ảnh</th>
                          <th scope="col">Tên sản phẩm</th>
+                         <th scope="col">Mô tả sản phẩm</th>
                          <th scope="col">Giá sản phẩm</th>
                          <th scope="col">Thao tác</th>
 
@@ -56,7 +59,8 @@
                              <td><img style="width: 150px" src="./images/products/{{ $male->image_path }}" alt="">
                              </td>
                              <td>{{ $male->name }}</td>
-                             <td>{{ $male->price }}</td>
+                             <td>{{ $male->content }}</td>
+                             <td class="text-danger">$ {{ $male->price }}</td>
                              <td style="display: flex; justify-content: space-evenly;">
                                  <button class="btn btn-primary">
                                      <a class="text-white" href={{ route('update-spmale', $male->id) }}>

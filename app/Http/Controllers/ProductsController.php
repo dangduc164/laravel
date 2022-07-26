@@ -11,6 +11,7 @@ use App\Models\Female_product;
 use App\Models\Male_product;
 use App\Models\Order;
 use App\Models\Order_product;
+use App\Models\Shoes_product;
 use Exception;
 
 class ProductsController extends Controller
@@ -142,6 +143,29 @@ class ProductsController extends Controller
             return redirect('login');
         }
     }
+    public function addcartS(Request $request, $id)
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            $product = Shoes_product::find($id);
+            $cart = new cart;
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->name = $product->name;
+            $cart->price = $product->price;
+            $cart->content = $product->content;
+            $cart->image_path = $product->image_path;
+            $cart->amount = $request->amount;
+            $cart->size = $request->size;
+            $cart->phone = $request->phone;
+            $cart->type = $request->type;
+            // dd($cart);
+            $cart->save();
+            return redirect()->route('welcome')->with('success', 'Đã thêm vào giỏ hàng');
+        } else {
+            return redirect('login');
+        }
+    }
     public function showcart()
     {
         //show sản phẩm thêm vào giỏ hàng theo user_email
@@ -194,6 +218,7 @@ class ProductsController extends Controller
     {
         $item_gs = DB::table('order_products')->where('type', 'nữ')->get();
         $item_bs = DB::table('order_products')->where('type', 'nam')->get();
-        return view('layouts.order', compact('item_gs', 'item_bs'));
+        $item_Ss = DB::table('order_products')->where('type', 'shoe')->get();
+        return view('layouts.order', compact('item_gs', 'item_bs', 'item_Ss'));
     }
 }

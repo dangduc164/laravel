@@ -3,7 +3,7 @@
      <div class="modal" id="myModalShoes{{ $shoe->id }}" tabindex="-1">
          <div class="modal-dialog modal-xl">
              <div class="modal-content">
-                 <form action="{{ route('addcart', $shoe->id) }}" method="post">
+                 <form action="{{ route('addcartS', $shoe->id) }}" method="post">
                      @csrf
                      <div class="wrap">
                          <div class="row">
@@ -17,7 +17,7 @@
                                      <div class="type-product" style="display: none">
                                          <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
                                              <input type="text" class="text-dark bg-white" style="border: none"
-                                                 name="type" value="shoes" />
+                                                 name="type" value="shoe" />
                                          </label>
                                      </div>
                                      <div class="title-product">
@@ -43,12 +43,14 @@
                                          <label for="size" class="text-warning h5 fw-bold">Size:</label>
                                          <br>
                                          <select name="size" id="size" style="width: 30%" class="ml-2 p-2">
+                                             <option value="36">36</option>
                                              <option value="37">37</option>
                                              <option value="38">38</option>
-                                             <option value="39">39</option>
+                                             <option value="39">49</option>
                                              <option value="40">40</option>
                                              <option value="41">41</option>
                                              <option value="42">42</option>
+                                             <option value="43">43</option>
                                          </select>
                                      </div>
                                      <div class="info">

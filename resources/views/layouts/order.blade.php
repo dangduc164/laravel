@@ -3,10 +3,10 @@
 
 @section('content')
     <div class="main py-5">
-        <div class="container-fluid">
-            <div class="hanldeBtnCreateMale">
-                <h4>Danh sách đơn hàng đồ thể thao nữ</h4>
-            </div>
+        <div class="titleTable">
+            <h4>Danh sách đơn hàng đồ thể thao nữ</h4>
+        </div>
+        <div class="container-fluid" style="overflow-x: scroll">
             <table class="table border">
                 <thead class="bg-warning">
                     <tr class="text-center">
@@ -26,13 +26,15 @@
                     @foreach ($item_gs as $g)
                         <tr class="text-center">
                             <th scope="row">{{ $g->id }}</th>
-                            <td>{{ $g->userName }}</td>
+                            <td class="fw-bold h6">{{ $g->userName }}</td>
                             <td class="text-primary" style="text-decoration: underline">{{ $g->email }}</td>
                             <td>+84{{ $g->phone }}</td>
                             <td>{{ $g->nameItem }}</td>
                             <td>{{ $g->amount }}</td>
-                            <td>{{ $g->price }}</td>
-                            <td class="text-danger">$ {{ $g->amount * $g->price }}</td>
+                            <td class="text-danger">$ {{ $g->price }}</td>
+                            <td class="text-danger fw-bold">
+                                <h5>$ {{ $g->amount * $g->price }}</h5>
+                            </td>
                             <td>đã thanh toán...</td>
                             <td>
                                 <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
@@ -48,10 +50,10 @@
 
 
     <div class="main py-5">
-        <div class="container-fluid">
-            <div class="hanldeBtnCreateMale">
-                <h4>Danh sách đơn hàng đồ thể thao nam</h4>
-            </div>
+        <div class="titleTable">
+            <h4>Danh sách đơn hàng đồ thể thao nam</h4>
+        </div>
+        <div class="container-fluid " style="overflow-x:scroll">
             <table class="table border">
                 <thead class="bg-warning">
                     <tr class="text-center">
@@ -71,13 +73,15 @@
                     @foreach ($item_bs as $b)
                         <tr class="text-center">
                             <th scope="row">{{ $b->id }}</th>
-                            <td>{{ $b->userName }}</td>
+                            <td class="h6 fw-blod">{{ $b->userName }}</td>
                             <td class="text-primary" style="text-decoration: underline">{{ $b->email }}</td>
                             <td>+84{{ $b->phone }}</td>
                             <td>{{ $b->nameItem }}</td>
                             <td>{{ $b->amount }}</td>
-                            <td>{{ $b->price }}</td>
-                            <td class="text-danger">$ {{ $b->amount * $b->price }}</td>
+                            <td class="text-danger">$ {{ $b->price }}</td>
+                            <td class="text-danger fw-bold">
+                                <h5>$ {{ $b->amount * $b->price }}</h5>
+                            </td>
                             <td>đã thanh toán...</td>
                             <td>
                                 <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
@@ -91,10 +95,10 @@
     </div>
 
     <div class="main py-5">
-        <div class="container-fluid">
-            <div class="hanldeBtnCreateMale">
-                <h4>Danh sách đơn hàng giày thể thao</h4>
-            </div>
+        <div class="titleTable">
+            <h4>Danh sách đơn hàng giày thể thao</h4>
+        </div>
+        <div class="container-fluid" style="overflow-x:scroll">
             <table class="table border">
                 <thead class="bg-warning">
                     <tr class="text-center">
@@ -110,17 +114,19 @@
                         <th scope="col">Thao tác</th>
                     </tr>
                 </thead>
-                {{-- <tbody>
-                    @foreach ($item_bs as $b)
+                <tbody>
+                    @foreach ($item_Ss as $s)
                         <tr class="text-center">
-                            <th scope="row">{{ $b->id }}</th>
-                            <td>{{ $b->userName }}</td>
-                            <td class="text-primary" style="text-decoration: underline">{{ $b->email }}</td>
-                            <td>+84{{ $b->phone }}</td>
-                            <td>{{ $b->nameItem }}</td>
-                            <td>{{ $b->amount }}</td>
-                            <td>{{ $b->price }}</td>
-                            <td class="text-danger">$ {{ $b->amount * $b->price }}</td>
+                            <th scope="row">{{ $s->id }}</th>
+                            <td class="h6 fw-bold">{{ $s->userName }}</td>
+                            <td class="text-primary" style="text-decoration: underline">{{ $s->email }}</td>
+                            <td>+84{{ $s->phone }}</td>
+                            <td>{{ $s->nameItem }}</td>
+                            <td>{{ $s->amount }}</td>
+                            <td class="text-danger">$ {{ $s->price }}</td>
+                            <td class="text-danger fw-bold">
+                                <h5>$ {{ $s->amount * $s->price }}</h5>
+                            </td>
                             <td>đã thanh toán...</td>
                             <td>
                                 <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
@@ -128,7 +134,7 @@
                             </td>
                         </tr>
                     @endforeach
-                </tbody> --}}
+                </tbody>
             </table>
         </div>
     </div>

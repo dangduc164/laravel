@@ -87,6 +87,7 @@ Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name
 /** thêm sản phẩm vào giỏ hàng */
 Route::post('/addcart/{id}', [App\Http\Controllers\ProductsController::class, 'addcart'])->name('addcart');
 Route::post('/addcartB/{id}', [App\Http\Controllers\ProductsController::class, 'addcartB'])->name('addcartB');
+Route::post('/addcartS/{id}', [App\Http\Controllers\ProductsController::class, 'addcartS'])->name('addcartS');
 
 //xóa
 Route::post('/deleteItem/{id}', [ProductsController::class, 'dltItem'])->name('deleteItem');
@@ -156,7 +157,7 @@ Route::group(['middleware' => 'isadmin'], function () {
 
     /** delete */
     Route::DELETE('/layouts/contact/delete/{id}', [ContactController::class, 'destroy'])->name('delete-contact');
-    Route::DELETE('/layouts/female/delete/{id}', [Female_productController::class, 'destroy'])->name('delete-female');
+    Route::DELETE('/layouts/female/delete/{id}', [FemaleController::class, 'destroy'])->name('delete-female');
     // Route::DELETE('/layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
     Route::DELETE('layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
     Route::DELETE('layouts/shoes/delete/{id}', [ShoesController::class, 'destroy'])->name('delete-shoes');

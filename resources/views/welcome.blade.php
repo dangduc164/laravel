@@ -11,9 +11,9 @@
     {{-- main --}}
     <main>
         {{-- thông báo --}}
-        @if (session('admin'))
-            <div class="alert text-center alert-success h4 text-white" id="alert" role="alert">
-                <h1>{{ session('admin') }}</h1>
+        @if (session('success'))
+            <div class="alert alert-success add h4 text-white" id="alert" role="alert">
+                {{ session('success') }}
             </div>
         @endif
         {{-- end thông báo --}}

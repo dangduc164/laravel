@@ -3,14 +3,14 @@
 
 @section('content')
     <div class="main py-5">
-        <div class="container-fluid">
-            {{-- thông báo --}}
-            @if (session('delete'))
-                <div class="alert alert-success layoutdelte h4 text-white" id="alert" role="alert">
-                    {{ session('delete') }}
-                </div>
-            @endif
-            {{-- end thông báo --}}
+        {{-- thông báo --}}
+        @if (session('delete'))
+            <div class="alert alert-success layoutdelte h4 text-white" id="alert" role="alert">
+                {{ session('delete') }}
+            </div>
+        @endif
+        {{-- end thông báo --}}
+        <div class="container-fluid" style="overflow-x: scroll">
             <table class="table border py-3">
                 <thead class="bg-warning">
                     <tr class="border">

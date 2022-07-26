@@ -3,34 +3,37 @@
 
 @section('content')
     <div class="main py-5">
-        <div class="container-fluid">
 
-            {{-- thông báo --}}
-            @if (session('success'))
-                <div class="alert alert-success layoutAdd h4 text-white" id="alert" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('delete'))
-                <div class="alert alert-success layoutdelete h4 text-white" id="alert" role="alert">
-                    {{ session('delete') }}
-                </div>
-            @endif
-            {{-- end thông báo --}}
+        {{-- thông báo --}}
+        @if (session('success'))
+            <div class="alert alert-success layoutAdd h4 text-white" id="alert" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('delete'))
+            <div class="alert alert-success layoutdelete h4 text-white" id="alert" role="alert">
+                {{ session('delete') }}
+            </div>
+        @endif
+        {{-- end thông báo --}}
 
-            <div class="hanldeBtnCreateMale">
+        <div class="hanldeBtnCreateMale">
+            <div class="container-fluid">
                 <button class="btn btn-success">
                     <a class="text-white" href={{ route('create-female') }}>
                         <i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm mới
                     </a>
                 </button>
-            </div>
-            <table class="table border">
+            </div c>
+        </div>
+        <div class="container-fluid" style="overflow-x: scroll">
+            <table class="table border text-center">
                 <thead class="bg-warning">
                     <tr class="border">
                         <th scope="col">id</th>
                         <th scope="col">Ảnh</th>
                         <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Mô tả sản phẩm</th>
                         <th scope="col">Giá sản phẩm</th>
                         <th scope="col">Thao tác</th>
 
@@ -43,7 +46,8 @@
                             <td><img style="width: 150px" src="./images/products/{{ $female->image_path }}" alt="">
                             </td>
                             <td>{{ $female->name }}</td>
-                            <td>{{ $female->price }}</td>
+                            <td>{{ $female->content }}</td>
+                            <td class="text-danger">$ {{ $female->price }}</td>
                             <td style="display: flex; justify-content: space-evenly;">
 
                                 <button class="btn btn-primary">
