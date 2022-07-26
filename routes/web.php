@@ -86,6 +86,8 @@ Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name
 
 /** thêm sản phẩm vào giỏ hàng */
 Route::post('/addcart/{id}', [App\Http\Controllers\ProductsController::class, 'addcart'])->name('addcart');
+Route::post('/addcartB/{id}', [App\Http\Controllers\ProductsController::class, 'addcartB'])->name('addcartB');
+
 //xóa
 Route::post('/deleteItem/{id}', [ProductsController::class, 'dltItem'])->name('deleteItem');
 Route::DELETE('/cart/delete/{id}', [productsController::class, 'dltItem'])->name('deleteItem');

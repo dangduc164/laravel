@@ -42,7 +42,7 @@ class CreateShoesProductController extends Controller
             $img = $request->image_path;
             //lấy tên file
             $imgNew =  $img->getClientOriginalName();
-            $img->move('images/img-shoes', $imgNew); //upload file vào thư mục public/images
+            $img->move('images/products', $imgNew); //upload file vào thư mục public/images
             // Lưu tên ảnh trên DB
             $input['image_path'] = $imgNew;
         } else {

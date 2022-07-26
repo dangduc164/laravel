@@ -53,7 +53,7 @@
                      @foreach ($males as $male)
                          <tr>
                              <th scope="row">{{ $male->id }}</th>
-                             <td><img style="width: 150px" src="./images/img-male/{{ $male->image_path }}" alt="">
+                             <td><img style="width: 150px" src="./images/products/{{ $male->image_path }}" alt="">
                              </td>
                              <td>{{ $male->name }}</td>
                              <td>{{ $male->price }}</td>

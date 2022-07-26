@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
+use App\Models\Female_product;
 use App\Models\Male_product;
 use App\Models\Order;
 use App\Models\Order_product;
@@ -100,6 +101,29 @@ class ProductsController extends Controller
         if (Auth::check()) {
             $user = auth()->user();
             $product = Male_product::find($id);
+            $cart = new cart;
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->name = $product->name;
+            $cart->price = $product->price;
+            $cart->content = $product->content;
+            $cart->image_path = $product->image_path;
+            $cart->amount = $request->amount;
+            $cart->size = $request->size;
+            $cart->phone = $request->phone;
+            $cart->type = $request->type;
+            // dd($cart);
+            $cart->save();
+            return redirect()->back();
+        } else {
+            return redirect('login');
+        }
+    }
+    public function addcartB(Request $request, $id)
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            $product = Female_product::find($id);
             $cart = new cart;
             $cart->name = $user->name;
             $cart->email = $user->email;

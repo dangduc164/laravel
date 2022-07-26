@@ -29,7 +29,7 @@
                                                     </p>
                                                     <div class="electronic_img">
                                                         <img class="zoom-img"
-                                                            src="./images/img-male/{{ $male->image_path }}" />
+                                                            src="./images/products/{{ $male->image_path }}" />
                                                     </div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">

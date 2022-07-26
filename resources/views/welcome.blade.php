@@ -36,7 +36,7 @@
                                                     </p>
                                                     <div class="tshirt_img">
                                                         <img class="zoom-img" class="zoom-img"
-                                                            src="./images/img-female/{{ $female->image_path }}" />
+                                                            src="./images/products/{{ $female->image_path }}" />
                                                     </div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">
@@ -84,7 +84,7 @@
                                                     </p>
                                                     <div class="electronic_img">
                                                         <img class="zoom-img"
-                                                            src="./images/img-male/{{ $male->image_path }}" />
+                                                            src="./images/products/{{ $male->image_path }}" />
                                                     </div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">
@@ -130,7 +130,7 @@
                                                     </p>
                                                     <div class="jewellery_img">
                                                         <img class="zoom-img customImgShoes"
-                                                            src="./images/img-shoes/{{ $shoe->image_path }}" />
+                                                            src="./images/products/{{ $shoe->image_path }}" />
                                                     </div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">

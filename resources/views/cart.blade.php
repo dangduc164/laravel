@@ -26,6 +26,7 @@
                                 <th>Số lượng</th>
                                 <th>Size</th>
                                 <th>Đơn giá</th>
+                                <th>Thành tiền</th>
                                 <th>thao tác</th>
                             </tr>
                         </thead>
@@ -40,8 +41,8 @@
                                 <tr>
                                     <td>{{ $show->id }}</td>
                                     <td>
-                                        <img src="./images/img-female/{{ $show->image_path }}" width="150px"
-                                            height="150px" class="hinhdaidien" />
+                                        <img src="./images/products/{{ $show->image_path }}" width="150px" height="150px"
+                                            class="hinhdaidien" />
                                     </td>
                                     <td>{{ $show->name }}</td>
 
@@ -55,6 +56,8 @@
                                         {{ $show->size }}
                                     </td>
                                     <td class="text-center">$ {{ $show->price }}</td>
+                                    <!-- thanh tiền-->
+                                    <td>{{ $show->price * $show->amount }}</td>
                                     <td style="display: flex; gap: 5px;justify-content: center">
                                         {{-- cập nhật thông tin sp --}}
                                         <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"

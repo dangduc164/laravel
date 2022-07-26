@@ -12,9 +12,10 @@
                          </div>
                          <div class="col-12 col-md-6">
                              <div class="content-product">
-                                 <div class="type-product">
+                                 <div class="type-product" style="display: none">
                                      <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
-                                         <span class="text-dark" name="type">giày</span>
+                                         <input type="text" class="text-dark bg-white" style="border: none"
+                                             name="type" value="giày" />
                                      </label>
                                  </div>
                                  <div class="title-product">

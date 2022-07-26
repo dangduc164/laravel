@@ -35,8 +35,8 @@
                     @foreach ($females as $female)
                         <tr>
                             <th scope="row">{{ $female->id }}</th>
-                            <td><img style="width: 150px" src="./images/img-female/{{ $female->image_path }}"
-                                    alt=""></td>
+                            <td><img style="width: 150px" src="./images/products/{{ $female->image_path }}" alt="">
+                            </td>
                             <td>{{ $female->name }}</td>
                             <td>{{ $female->price }}</td>
                             <td style="display: flex; justify-content: space-evenly;">

@@ -29,7 +29,7 @@
                                                     </p>
                                                     <div class="jewellery_img">
                                                         <img class="zoom-img"
-                                                            src="./images/img-shoes/{{ $shoe->image_path }}" />
+                                                            src="./images/products/{{ $shoe->image_path }}" />
                                                     </div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">
