@@ -21,12 +21,13 @@
              </div>
          </div>
          <div class="container-fluid" style="overflow-x: scroll">
-             <table class="table border">
+             <table class="table border text-center">
                  <thead class="bg-warning">
                      <tr>
                          <th scope="col">id</th>
                          <th scope="col">Ảnh</th>
                          <th scope="col">Tên sản phẩm</th>
+                         <th scope="col">Mô tả sản phẩm</th>
                          <th scope="col">Giá sản phẩm</th>
                          <th scope="col">Thao tác</th>
 
@@ -39,7 +40,8 @@
                              <td><img style="width: 150px" src="./images/products/{{ $shoe->image_path }}" alt="">
                              </td>
                              <td>{{ $shoe->name }}</td>
-                             <td>{{ $shoe->price }}</td>
+                             <td>{{ $shoe->content }}</td>
+                             <td class="text-danger">$ {{ $shoe->price }}</td>
                              <td style="display: flex; justify-content: space-evenly;">
                                  <button class="btn btn-primary">
                                      <a class="text-white" href={{ route('update-spshoes', $shoe->id) }}>

@@ -34,4 +34,14 @@ class Cart extends Model
     {
         Cart::where('orderNumber', $orderNumber)->update($resquest);
     }
+    static function cancelOrder($resquest, $orderNumber)
+    {
+        Cart::where('orderNumber', $orderNumber)->update($resquest);
+    }
+
+    //xác nhận đơn hàng
+    static function comfirm($resquest, $orderNumber)
+    {
+        Cart::where('orderNumber', $orderNumber)->update($resquest);
+    }
 }

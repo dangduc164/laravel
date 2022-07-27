@@ -22,9 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    // đếm tổng đơn hàng được order
     public function index()
     {
-        $sumOrder = DB::table('order_products')->count();
+        $sumOrder = DB::table('carts')->where('status', '1')->count();
         return view('layouts.dashboard', compact('sumOrder'));
     }
 }

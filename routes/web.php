@@ -94,7 +94,15 @@ Route::post('/addcartS/{id}', [App\Http\Controllers\ProductsController::class, '
 Route::DELETE('/cart/delete/{id}', [productsController::class, 'dltItem'])->name('deleteItem');
 // sửa
 Route::post('/updateItem/{id}', [ProductsController::class, 'updataItem'])->name('updateItem');
+//order
 Route::post('/order/{id}', [ProductsController::class, 'orderItem'])->name('orderItem');
+//cancel order
+Route::post('/cancelOrder/{id}', [ProductsController::class, 'cancelOrder'])->name('cancelOrder');
+
+//admin duyệt đơn
+Route::post('/comfirm/{id}', [ProductsController::class, 'comfirm'])->name('comfirm');
+
+
 /**end thêm sản phẩm vào giỏ hàng */
 
 

@@ -3,8 +3,17 @@
 
 @section('content')
     <div class="main py-5">
+        {{-- thông báo --}}
+        @if (session('success'))
+            <div class="alert alert-success h4 text-white" id="alert" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+        {{-- end thông báo --}}
         <div class="titleTable">
-            <h4>Danh sách đơn hàng đồ thể thao nữ</h4>
+            <div class="container-fluid">
+                <h4>Danh sách đơn hàng đồ thể thao nữ</h4>
+            </div>
         </div>
         <div class="container-fluid" style="overflow-x: scroll">
             <table class="table border">
@@ -35,20 +44,37 @@
                             <td class="text-danger fw-bold">
                                 <h5>$ {{ $g->amount * $g->price }}</h5>
                             </td>
-                            @if ($g->status == 1)
+                            @if ($g->delivery == 0)
                                 {
-                                <td>đang chờ xử lý...</td>
+                                <td>Đang chờ xử lý...</td>
                                 }
-                            @elseif($g->status == 2)
+                            @elseif($g->delivery == 1)
                                 {
-                                <td>đang giao hàng!</td>
+                                <td>Đã xác nhận!</td>
                                 }
-                            @else{
-                                <td>đã thanh toán</td>
+                            @else
+                                {
+                                <td>Đang giao hàng</td>
                                 }
                             @endif
                             <td>
-                                <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
+                                @if ($g->delivery == 0)
+                                    <a class="btn btn-info" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirm{{ $g->id }}">
+                                        Xác Nhận
+                                    </a>
+                                @elseif($g->delivery == 1)
+                                    <button type="submot" class="btn btn-primary">
+                                        <i class="fa-solid fa-check"></i>
+
+                                    </button>
+                                @elseif($g->delivery == 2)
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa-solid fa-check"></i>
+                                        đã thanh toán
+                                    </button>
+                                @endif
+                                {{-- <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button> --}}
                                 {{-- <form action="{{ route('dltOrder', ['id' => $g->orderNumber]) }}" method="POST"
                                     onsubmit="returnConfirmDeletr(this)">
                                     @csrf
@@ -57,6 +83,51 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form> --}}
+
+                                <!-- modal cancel--->
+                                <div class="modal" id="myModalComfirm{{ $g->id }}">
+                                    <form method="POST" action="{{ route('orderItem', $g->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $g->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="status" value="1">
+                                                        <p class="text-center">
+                                                            Bạn có chắc chắn xác nhận đơn hàng với mã là:
+                                                            <strong class="h6">{{ $g->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post" action="{{ route('comfirm', ['id' => $g->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                    {{-- <button type="button" class="btn btn-success"
+                                                    data-bs-dismiss="modal">Cập nhật</button> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -68,7 +139,9 @@
 
     <div class="main py-5">
         <div class="titleTable">
-            <h4>Danh sách đơn hàng đồ thể thao nam</h4>
+            <div class="container-fluid">
+                <h4>Danh sách đơn hàng đồ thể thao nam</h4>
+            </div>
         </div>
         <div class="container-fluid " style="overflow-x:scroll">
             <table class="table border">
@@ -120,7 +193,9 @@
 
     <div class="main py-5">
         <div class="titleTable">
-            <h4>Danh sách đơn hàng giày thể thao</h4>
+            <div class="container-fluid">
+                <h4>Danh sách đơn hàng giày thể thao</h4>
+            </div>
         </div>
         <div class="container-fluid" style="overflow-x:scroll">
             <table class="table border">

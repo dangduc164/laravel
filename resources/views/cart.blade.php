@@ -94,7 +94,6 @@
                                         </form>
 
                                         {{-- btn order --}}
-
                                         @if ($show->status == 0)
                                             <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
                                                 data-bs-toggle="modal"
@@ -102,9 +101,9 @@
                                                 Đặt hàng
                                             </a>
                                         @else
-                                            <a class="btn btn-danger" name="btnUpdate" id="btnUpdate" href="#"
+                                            <a class="btn btn-warning" name="btnUpdate" id="btnUpdate" href="#"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#myModalOrder{{ $show->id }}">
+                                                data-bs-target="#myModalCancel{{ $show->id }}">
                                                 Hủy
                                             </a>
                                         @endif
@@ -148,9 +147,6 @@
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
                                                     <input type="submit" class="btn btn-success" value="Cập nhật">
-
-                                                    {{-- <button type="button" class="btn btn-success"
-                                                    data-bs-dismiss="modal">Cập nhật</button> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -191,8 +187,56 @@
                                                     <form method="post"
                                                         action="{{ route('orderItem', ['id' => $show->id]) }}">
                                                         @csrf
-                                                        <input width="90px" type="submit" class="btn btn-success"
-                                                            value="Đặt hàng" />
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal"
+                                                        value="No">
+                                                    {{-- <button type="button" class="btn btn-success"
+                                                    data-bs-dismiss="modal">Cập nhật</button> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- modal cancel--->
+                                <div class="modal" id="myModalCancel{{ $show->id }}">
+                                    <form method="POST" action="{{ route('orderItem', $show->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $show->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="status"
+                                                            value="0">
+                                                        <p class="text-center">
+                                                            Bạn có muốn hủy đơn hàng:
+                                                            <strong class="h6"> {{ $show->name }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('cancelOrder', ['id' => $show->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
                                                     </form>
 
                                                     <input style="width: 90px !important" type="button"

@@ -174,12 +174,16 @@ class ProductsController extends Controller
     }
     public function showcart()
     {
-        //show sản phẩm thêm vào giỏ hàng theo user_email
-        $email_user = Auth::user()->email;
-        // dd($email_user);
-        $shows = DB::table('carts')->where('email', $email_user)->get();
-        // dd($shows);
-        return view('cart', compact('shows'));
+        if (Auth::check()) {
+            //show sản phẩm thêm vào giỏ hàng theo user_email
+            $email_user = Auth::user()->email;
+            // dd($email_user);
+            $shows = DB::table('carts')->where('email', $email_user)->get();
+            // dd($shows);
+            return view('cart', compact('shows'));
+        } else {
+            return redirect('login');
+        }
     }
 
     public function updataItem(Request $request, $id)
@@ -202,6 +206,18 @@ class ProductsController extends Controller
         try {
             Cart::newOrder($input, $orderNumber);
             return redirect()->route('cartUI')->with('success', 'Đặt hàng thành công!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    /** cancel order  */
+    public function cancelOrder(Request $request, $orderNumber)
+    {
+        $input = $request->except(['_token']);;
+        // dd($input);
+        try {
+            Cart::cancelOrder($input, $orderNumber);
+            return redirect()->route('cartUI')->with('delete', 'Hủy đặt hàng thành công!');
         } catch (Exception $ex) {
             throw $ex;
         }
@@ -244,7 +260,18 @@ class ProductsController extends Controller
         $item_Ss = DB::table('carts')->where('type', '3')->Where('status', '1')->get();
         return view('layouts.order', compact('item_gs', 'item_bs', 'item_Ss'));
     }
-
+    /** cancel order  */
+    public function comfirm(Request $request, $orderNumber)
+    {
+        $input = $request->except(['_token']);;
+        dd($input);
+        try {
+            Cart::comfirm($input, $orderNumber);
+            return redirect()->route('home')->with('success', 'Đã xác nhận đơn hàng!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 
     //xóa đơn hàng
     // public function dltOrder($orderNumber)
@@ -254,10 +281,5 @@ class ProductsController extends Controller
     //     return redirect()->route('order')->with('success', 'Xóa đơn hàng thành công!');
     // }
 
-    // đếm tổng đơn hàng được order
-    public function sumOrder()
-    {
-        $sumOrder = DB::table('order_products')->count();
-        return view('layouts.dashboard.blade', compact('sumOrder'));
-    }
+
 }
