@@ -25,22 +25,39 @@
                 <tbody>
                     @foreach ($item_gs as $g)
                         <tr class="text-center">
-                            <th scope="row">{{ $g->id }}</th>
+                            <th scope="row">{{ $g->orderNumber }}</th>
                             <td class="fw-bold h6">{{ $g->userName }}</td>
                             <td class="text-primary" style="text-decoration: underline">{{ $g->email }}</td>
                             <td>+84{{ $g->phone }}</td>
-                            <td>{{ $g->nameItem }}</td>
+                            <td>{{ $g->name }}</td>
                             <td>{{ $g->amount }}</td>
                             <td class="text-danger">$ {{ $g->price }}</td>
                             <td class="text-danger fw-bold">
                                 <h5>$ {{ $g->amount * $g->price }}</h5>
                             </td>
-                            <td>đã thanh toán...</td>
+                            @if ($g->status == 1)
+                                {
+                                <td>đang chờ xử lý...</td>
+                                }
+                            @elseif($g->status == 2)
+                                {
+                                <td>đang giao hàng!</td>
+                                }
+                            @else{
+                                <td>đã thanh toán</td>
+                                }
+                            @endif
                             <td>
                                 <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
-                                <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Hủy đơn</button>
+                                {{-- <form action="{{ route('dltOrder', ['id' => $g->orderNumber]) }}" method="POST"
+                                    onsubmit="returnConfirmDeletr(this)">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger text-white" type="submit">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form> --}}
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -72,11 +89,11 @@
                 <tbody>
                     @foreach ($item_bs as $b)
                         <tr class="text-center">
-                            <th scope="row">{{ $b->id }}</th>
+                            <th scope="row">{{ $b->orderNumber }}</th>
                             <td class="h6 fw-blod">{{ $b->userName }}</td>
                             <td class="text-primary" style="text-decoration: underline">{{ $b->email }}</td>
                             <td>+84{{ $b->phone }}</td>
-                            <td>{{ $b->nameItem }}</td>
+                            <td>{{ $b->name }}</td>
                             <td>{{ $b->amount }}</td>
                             <td class="text-danger">$ {{ $b->price }}</td>
                             <td class="text-danger fw-bold">
@@ -85,7 +102,14 @@
                             <td>đã thanh toán...</td>
                             <td>
                                 <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
-                                <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Hủy đơn</button>
+                                {{-- <form action="{{ route('dltOrder', ['id' => $b->orderNumber]) }}" method="POST"
+                                    onsubmit="returnConfirmDeletr(this)">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger text-white" type="submit">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -117,11 +141,11 @@
                 <tbody>
                     @foreach ($item_Ss as $s)
                         <tr class="text-center">
-                            <th scope="row">{{ $s->id }}</th>
+                            <th scope="row">{{ $s->orderNumber }}</th>
                             <td class="h6 fw-bold">{{ $s->userName }}</td>
                             <td class="text-primary" style="text-decoration: underline">{{ $s->email }}</td>
                             <td>+84{{ $s->phone }}</td>
-                            <td>{{ $s->nameItem }}</td>
+                            <td>{{ $s->name }}</td>
                             <td>{{ $s->amount }}</td>
                             <td class="text-danger">$ {{ $s->price }}</td>
                             <td class="text-danger fw-bold">
@@ -129,8 +153,19 @@
                             </td>
                             <td>đã thanh toán...</td>
                             <td>
-                                <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
-                                <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Hủy đơn</button>
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa-solid fa-check"></i> Lên đơn
+                                </button>
+
+                                {{-- <form action="{{ route('dltOrder', ['id' => $s->orderNumber]) }}" method="POST"
+                                    onsubmit="returnConfirmDeletr(this)">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger text-white" type="submit">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form> --}}
+
                             </td>
                         </tr>
                     @endforeach

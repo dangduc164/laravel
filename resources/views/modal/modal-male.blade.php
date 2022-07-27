@@ -17,7 +17,7 @@
                                      <div class="type-product" style="display: none">
                                          <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
                                              <input type="text" class="text-dark bg-white" style="border: none"
-                                                 name="type" value="nam" />
+                                                 name="type" value="2" />
                                          </label>
                                      </div>
                                      <div class="title-product">

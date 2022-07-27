@@ -10,20 +10,28 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
+        'orderNumber',
+        'user_Name',
+        'email',
+        'phone',
         'image_path',
-        'name',
-        'price',
+        'name_products',
         'content',
+        'price',
         'amount',
         'size',
-        'phone',
         'type',
-        // 'status',
+        'status',
+        'delivery',
 
     ];
 
     static function newItem($resquest, $id)
     {
         Cart::where('id', $id)->update($resquest);
+    }
+    static function newOrder($resquest, $orderNumber)
+    {
+        Cart::where('orderNumber', $orderNumber)->update($resquest);
     }
 }

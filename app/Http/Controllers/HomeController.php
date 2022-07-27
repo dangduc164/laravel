@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.app');
+        $sumOrder = DB::table('order_products')->count();
+        return view('layouts.dashboard', compact('sumOrder'));
     }
 }

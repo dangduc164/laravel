@@ -17,7 +17,7 @@
                                      <div class="type-product" style="display: none">
                                          <label for="name" class="fw-bold text-warning h5">Loại sản phẩm:
                                              <input type="text" class="text-dark bg-white" style="border: none"
-                                                 name="type" value="shoe" />
+                                                 name="type" value="3" />
                                          </label>
                                      </div>
                                      <div class="title-product">
@@ -46,7 +46,7 @@
                                              <option value="36">36</option>
                                              <option value="37">37</option>
                                              <option value="38">38</option>
-                                             <option value="39">49</option>
+                                             <option value="39">39</option>
                                              <option value="40">40</option>
                                              <option value="41">41</option>
                                              <option value="42">42</option>

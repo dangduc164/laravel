@@ -64,7 +64,7 @@
                              <td style="display: flex; justify-content: space-evenly;">
                                  <button class="btn btn-primary">
                                      <a class="text-white" href={{ route('update-spmale', $male->id) }}>
-                                         <i class="fa-solid fa-pen"></i> Chỉnh sửa
+                                         <i class="fa-solid fa-pen"></i>
                                      </a>
                                  </button>
 
@@ -74,7 +74,7 @@
                                      @csrf
                                      @method('delete')
                                      <button class="btn btn-danger text-white" type="submit">
-                                         <i class="fa-solid fa-trash-can"></i> Xóa
+                                         <i class="fa-solid fa-trash-can"></i>
                                      </button>
                                  </form>
 

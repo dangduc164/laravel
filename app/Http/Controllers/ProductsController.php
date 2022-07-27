@@ -103,7 +103,9 @@ class ProductsController extends Controller
             $user = auth()->user();
             $product = Male_product::find($id);
             $cart = new cart;
-            $cart->name = $user->name;
+            $random = rand();
+            $cart->orderNumber = ($random + $product->id);
+            $cart->userName = $user->name;
             $cart->email = $user->email;
             $cart->name = $product->name;
             $cart->price = $product->price;
@@ -115,7 +117,7 @@ class ProductsController extends Controller
             $cart->type = $request->type;
             // dd($cart);
             $cart->save();
-            return redirect()->back();
+            return redirect()->route('welcome')->with('success', 'Đã thêm vào giỏ hàng');
         } else {
             return redirect('login');
         }
@@ -125,8 +127,10 @@ class ProductsController extends Controller
         if (Auth::check()) {
             $user = auth()->user();
             $product = Female_product::find($id);
+            $random = rand();
             $cart = new cart;
-            $cart->name = $user->name;
+            $cart->orderNumber = ($random + $product->id);
+            $cart->userName = $user->name;
             $cart->email = $user->email;
             $cart->name = $product->name;
             $cart->price = $product->price;
@@ -138,7 +142,7 @@ class ProductsController extends Controller
             $cart->type = $request->type;
             // dd($cart);
             $cart->save();
-            return redirect()->back();
+            return redirect()->route('welcome')->with('success', 'Đã thêm vào giỏ hàng');
         } else {
             return redirect('login');
         }
@@ -148,8 +152,10 @@ class ProductsController extends Controller
         if (Auth::check()) {
             $user = auth()->user();
             $product = Shoes_product::find($id);
+            $random = rand();
             $cart = new cart;
-            $cart->name = $user->name;
+            $cart->orderNumber = ($random + $product->id);
+            $cart->userName = $user->name;
             $cart->email = $user->email;
             $cart->name = $product->name;
             $cart->price = $product->price;
@@ -187,38 +193,71 @@ class ProductsController extends Controller
             throw $ex;
         }
     }
+
+    /*-- order --*/
+    public function orderItem(Request $request, $orderNumber)
+    {
+        $input = $request->except(['_token']);;
+        // dd($input);
+        try {
+            Cart::newOrder($input, $orderNumber);
+            return redirect()->route('cartUI')->with('success', 'Đặt hàng thành công!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    /**-- xóa products trong giỏ hàng- */
     public function dltItem($id)
     {
         $cart = Cart::find($id);
         $cart->delete();
         return redirect()->route('cartUI')->with('delete', 'Xóa sản phẩm thành công!');
     }
-    public function orderItem(Request $request, $id)
-    {
-        $user = auth()->user();
-        $product = Cart::find($id);
-        $order = new order_product;
-        // $order->name = $user->name;
-        $order->userName = $user->name;
-        $order->email = $user->email;
-        $order->nameItem = $product->name;
-        $order->price = $product->price;
-        // $order->content = $product->content;
-        $order->image_path = $product->image_path;
-        $order->amount = $product->amount;
-        $order->size = $product->size;
-        $order->phone = $product->phone;
-        $order->type = $product->type;
-        $order->save();
-        // Order::newOrder($newOrder);
-        // return view('cart');
-        return redirect()->route('cartUI')->with('success', 'Đặt hàng thành công!');
-    }
+    // public function orderItem(Request $request, $id)
+    // {
+    //     $user = auth()->user();
+    //     $product = Cart::find($id);
+    //     $order = new order_product;
+    //     // $order->name = $user->name;
+    //     $order->orderNumber = $product->orderNumber;
+    //     $order->userName = $user->name;
+    //     $order->email = $user->email;
+    //     $order->nameItem = $product->name;
+    //     $order->price = $product->price;
+    //     // $order->content = $product->content;
+    //     $order->image_path = $product->image_path;
+    //     $order->amount = $product->amount;
+    //     $order->size = $product->size;
+    //     $order->phone = $product->phone;
+    //     $order->type = $product->type;
+    //     // dd($order);
+    //     $order->save();
+    //     // Order::newOrder($newOrder);
+    //     // return view('cart');
+    //     return redirect()->route('cartUI')->with('success', 'Đặt hàng thành công!');
+    // }
     public function showOrder()
     {
-        $item_gs = DB::table('order_products')->where('type', 'nữ')->get();
-        $item_bs = DB::table('order_products')->where('type', 'nam')->get();
-        $item_Ss = DB::table('order_products')->where('type', 'shoe')->get();
+        $item_gs = DB::table('carts')->where('type', '1')->Where('status', '1')->get();
+        $item_bs = DB::table('carts')->where('type', '2')->Where('status', '1')->get();
+        $item_Ss = DB::table('carts')->where('type', '3')->Where('status', '1')->get();
         return view('layouts.order', compact('item_gs', 'item_bs', 'item_Ss'));
+    }
+
+
+    //xóa đơn hàng
+    // public function dltOrder($orderNumber)
+    // {
+    //     $dltOrder = Order_product::find($orderNumber);
+    //     $dltOrder->delete();
+    //     return redirect()->route('order')->with('success', 'Xóa đơn hàng thành công!');
+    // }
+
+    // đếm tổng đơn hàng được order
+    public function sumOrder()
+    {
+        $sumOrder = DB::table('order_products')->count();
+        return view('layouts.dashboard.blade', compact('sumOrder'));
     }
 }

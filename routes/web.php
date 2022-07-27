@@ -90,15 +90,15 @@ Route::post('/addcartB/{id}', [App\Http\Controllers\ProductsController::class, '
 Route::post('/addcartS/{id}', [App\Http\Controllers\ProductsController::class, 'addcartS'])->name('addcartS');
 
 //xóa
-Route::post('/deleteItem/{id}', [ProductsController::class, 'dltItem'])->name('deleteItem');
+// Route::post('/deleteItem/{id}', [ProductsController::class, 'dltItem'])->name('deleteItem');
 Route::DELETE('/cart/delete/{id}', [productsController::class, 'dltItem'])->name('deleteItem');
 // sửa
 Route::post('/updateItem/{id}', [ProductsController::class, 'updataItem'])->name('updateItem');
 Route::post('/order/{id}', [ProductsController::class, 'orderItem'])->name('orderItem');
-
-
 /**end thêm sản phẩm vào giỏ hàng */
 
+
+//render ui
 Route::get('/maleui', [App\Http\Controllers\UI\MaleController::class, 'index'])->name('maleUI');
 Route::get('/femaleui', [App\Http\Controllers\UI\FemaleController::class, 'index'])->name('femaleUI');
 Route::get('/shoesui', [App\Http\Controllers\UI\ShoesController::class, 'index'])->name('shoesUI');
@@ -112,8 +112,6 @@ Route::get('/cartui', [ProductsController::class, 'showcart'])->name('cartUI');
 
 /*-- Admin --*/
 Auth::routes();
-
-
 
 /*-- create product --*/
 Route::group(['middleware' => 'isadmin'], function () {
@@ -161,6 +159,9 @@ Route::group(['middleware' => 'isadmin'], function () {
     // Route::DELETE('/layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
     Route::DELETE('layouts/male/delete/{id}', [MaleController::class, 'destroy'])->name('delete-male');
     Route::DELETE('layouts/shoes/delete/{id}', [ShoesController::class, 'destroy'])->name('delete-shoes');
+
+    // xóa đơn hàng
+    // Route::DELETE('/order/delete/{orderNumber}', [productsController::class, 'dltOrder'])->name('dltOrder');
 
     /** end delete */
 

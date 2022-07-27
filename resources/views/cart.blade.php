@@ -39,7 +39,7 @@
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr>
-                                <th>STT</th>
+                                <th>Mã đơn hàng</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
@@ -56,9 +56,10 @@
                             @foreach ($shows as $show)
                                 @php
                                     $total += $show->price * $show->amount;
+                                    // $random = rand();
                                 @endphp
                                 <tr>
-                                    <td>{{ $show->id }}</td>
+                                    <td>{{ $show->orderNumber }}</td>
                                     <td>
                                         <img src="./images/products/{{ $show->image_path }}" width="150px"
                                             height="150px" class="hinhdaidien" />
@@ -93,14 +94,29 @@
                                         </form>
 
                                         {{-- btn order --}}
-                                        <form method="post" action="{{ route('orderItem', ['id' => $show->id]) }}">
+
+                                        @if ($show->status == 0)
+                                            <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#myModalOrder{{ $show->id }}">
+                                                Đặt hàng
+                                            </a>
+                                        @else
+                                            <a class="btn btn-danger" name="btnUpdate" id="btnUpdate" href="#"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#myModalOrder{{ $show->id }}">
+                                                Hủy
+                                            </a>
+                                        @endif
+
+                                        {{-- <form method="post" action="{{ route('orderItem', ['id' => $show->id]) }}">
                                             @csrf
                                             <input type="submit" class="btn btn-success" value="Đặt hàng" />
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
 
-                                <!-- The Modal -->
+                                <!-- The Modal sửa -->
                                 <div class="modal" id="myModal{{ $show->id }}">
                                     <form method="POST" action="{{ route('updateItem', $show->id) }}">
                                         @csrf
@@ -109,7 +125,8 @@
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header bg-warning">
-                                                    <h4 class="modal-title">Cập nhật sản phẩm {{ $show->id }}</h4>
+                                                    <h6 class="modal-title">Cập nhật đơn hàng: {{ $show->orderNumber }}
+                                                    </h6>
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="modal"></button>
                                                 </div>
@@ -140,6 +157,54 @@
                                     </form>
                                 </div>
                                 <!--end modal--->
+
+                                <!-- modal order--->
+                                <div class="modal" id="myModalOrder{{ $show->id }}">
+                                    <form method="POST" action="{{ route('orderItem', $show->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $show->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="status"
+                                                            value="1">
+                                                        <p class="text-center">
+                                                            Bạn có muốn đặt hàng sản phẩm:
+                                                            <strong class="h6">{{ $show->name }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('orderItem', ['id' => $show->id]) }}">
+                                                        @csrf
+                                                        <input width="90px" type="submit" class="btn btn-success"
+                                                            value="Đặt hàng" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal"
+                                                        value="No">
+                                                    {{-- <button type="button" class="btn btn-success"
+                                                    data-bs-dismiss="modal">Cập nhật</button> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>

@@ -113,6 +113,15 @@ dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+#dashboard .wrap .box{
+ border-radius: 10px;
+}
+
+#dashboard .wrap ul {
+  display: flex;
+  justify-items: left;
+  gap: 50px;
+}
 
 ol ol,
 ul ul,
