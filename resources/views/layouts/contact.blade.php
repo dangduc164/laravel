@@ -11,7 +11,7 @@
         @endif
         {{-- end thông báo --}}
         <div class="container-fluid" style="overflow-x: scroll">
-            <table class="table border py-3">
+            <table class="table border py-3 text-center">
                 <thead class="bg-warning">
                     <tr class="border">
                         <th scope="col">id</th>
@@ -25,10 +25,10 @@
                 <tbody>
                     @foreach ($contacts as $contact)
                         <tr>
-                            <th scope="row">{{ $contact->id }}</th>
+                            <th>{{ $contact->id }}</th>
                             <th>{{ $contact->fullname }}</th>
-                            <td>{{ $contact->name }}</td>
-                            <td>{{ $contact->email }}</td>
+                            <td class="fw-bold">{{ $contact->name }}</td>
+                            <td class="text-decoration-underline text-primary">{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
                             <td>
                                 <form action="{{ route('delete-contact', ['id' => $contact->id]) }}" method="POST"

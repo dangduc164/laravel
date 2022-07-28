@@ -28,6 +28,11 @@ class HomeController extends Controller
     public function index()
     {
         $sumOrder = DB::table('carts')->where('status', '1')->count();
-        return view('layouts.dashboard', compact('sumOrder'));
+        $sumShip = DB::table('carts')->where('status', '1')->where('delivery', '2')->count();
+        $sumProcessed = DB::table('carts')->where('status', '1')->where('delivery', '1')->count();
+        $sumHandle = DB::table('carts')->where('status', '1')->where('delivery', '0')->count();
+        $sumSuccess = DB::table('carts')->where('status', '1')->where('delivery', '3')->count();
+        $sumComfirm = DB::table('carts')->where('delivery', '1')->count();
+        return view('layouts.dashboard', compact('sumOrder', 'sumShip', 'sumComfirm', 'sumHandle', 'sumProcessed', 'sumSuccess'));
     }
 }
