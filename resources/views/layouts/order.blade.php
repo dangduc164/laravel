@@ -529,7 +529,137 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form> --}}
+                                <div class="modal" id="myModalComfirm{{ $s->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $s->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
 
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $s->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="1">
+                                                        <p class="text-center">
+                                                            Bạn có chắc chắn xác nhận đơn hàng với mã là:
+                                                            <strong class="h6">{{ $s->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirm', ['id' => $s->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmShip{{ $s->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $s->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $s->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="2">
+                                                        <p class="text-center">
+                                                            Xác nhận đã gửi đơn hàng :
+                                                            <strong class="h6">{{ $s->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $s->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmPaid{{ $s->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $s->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $s->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="3">
+                                                        <p class="text-center">
+                                                            Xác nhận đơn hàng :
+                                                            <strong class="h6">{{ $s->orderNumber }}</strong>
+                                                            đã được thanh toán!
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $s->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
