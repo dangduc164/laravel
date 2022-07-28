@@ -77,7 +77,7 @@
                                     </td>
                                     <td class="text-center">$ {{ $show->price }}</td>
                                     <!-- thanh tiền-->
-                                    <td>{{ $show->price * $show->amount }}</td>
+                                    <td class="text-danger">$ {{ $show->price * $show->amount }}</td>
                                     <td style="display: flex; gap: 5px;justify-content: center">
                                         {{-- cập nhật thông tin sp --}}
                                         <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"

@@ -99,8 +99,6 @@ Route::post('/order/{id}', [ProductsController::class, 'orderItem'])->name('orde
 //cancel order
 Route::post('/cancelOrder/{id}', [ProductsController::class, 'cancelOrder'])->name('cancelOrder');
 
-//admin duyệt đơn
-Route::post('/comfirm/{id}', [ProductsController::class, 'comfirm'])->name('comfirm');
 
 
 /**end thêm sản phẩm vào giỏ hàng */
@@ -126,6 +124,16 @@ Route::group(['middleware' => 'isadmin'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/order', [App\Http\Controllers\ProductsController::class, 'showOrder'])->name('order');
+
+    //admin duyệt đơn
+    Route::post('/comfirm/{id}', [ProductsController::class, 'comfirm'])->name('comfirm');
+    //ship hàng
+    Route::post('/comfirmShip/{id}', [ProductsController::class, 'comfirmShip'])->name('comfirmShip');
+    //xác nhận thanh toán
+    Route::post('/comfirmPaid/{id}', [ProductsController::class, 'comfirmPaid'])->name('comfirmPaid');
+
+
+
     Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');
     Route::get('/female', [App\Http\Controllers\FemaleController::class, 'index'])->name('female');
     Route::get('/shoes', [App\Http\Controllers\ShoesController::class, 'index'])->name('shoes');

@@ -9,6 +9,16 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('ship'))
+            <div class="alert alert-success h4 text-white" id="alert" role="alert">
+                {{ session('ship') }}
+            </div>
+        @endif
+        @if (session('paid'))
+            <div class="alert alert-success h4 text-white" id="alert" role="alert">
+                {{ session('paid') }}
+            </div>
+        @endif
         {{-- end thông báo --}}
         <div class="titleTable">
             <div class="container-fluid">
@@ -45,18 +55,15 @@
                                 <h5>$ {{ $g->amount * $g->price }}</h5>
                             </td>
                             @if ($g->delivery == 0)
-                                {
                                 <td>Đang chờ xử lý...</td>
-                                }
                             @elseif($g->delivery == 1)
-                                {
                                 <td>Đã xác nhận!</td>
-                                }
-                            @else
-                                {
+                            @elseif($g->delivery == 2)
                                 <td>Đang giao hàng</td>
-                                }
+                            @else
+                                <td>Đã thanh toán!</td>
                             @endif
+
                             <td>
                                 @if ($g->delivery == 0)
                                     <a class="btn btn-info" name="btnUpdate" id="btnUpdate" href="#"
@@ -64,15 +71,20 @@
                                         Xác Nhận
                                     </a>
                                 @elseif($g->delivery == 1)
-                                    <button type="submot" class="btn btn-primary">
-                                        <i class="fa-solid fa-check"></i>
-
-                                    </button>
+                                    <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmShip{{ $g->id }}">
+                                        <i class="fa-solid fa-upload"></i>
+                                        Gửi hàng
+                                    </a>
                                 @elseif($g->delivery == 2)
-                                    <button type="submit" class="btn btn-success">
+                                    <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmPaid{{ $g->id }}">
                                         <i class="fa-solid fa-check"></i>
-                                        đã thanh toán
-                                    </button>
+                                        Đã thanh toán
+                                        </button>
+                                    </a>
+                                @else
+                                    <i class="fa-solid fa-check" style="color: seagreen"></i>
                                 @endif
                                 {{-- <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button> --}}
                                 {{-- <form action="{{ route('dltOrder', ['id' => $g->orderNumber]) }}" method="POST"
@@ -86,7 +98,7 @@
 
                                 <!-- modal cancel--->
                                 <div class="modal" id="myModalComfirm{{ $g->id }}">
-                                    <form method="POST" action="{{ route('orderItem', $g->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -101,7 +113,7 @@
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <input class="d-none" type="text" name="status" value="1">
+                                                        <input class="d-none" type="text" name="delivery" value="1">
                                                         <p class="text-center">
                                                             Bạn có chắc chắn xác nhận đơn hàng với mã là:
                                                             <strong class="h6">{{ $g->orderNumber }}</strong>
@@ -121,8 +133,93 @@
 
                                                     <input style="width: 90px !important" type="button"
                                                         class="btn btn-danger" data-bs-dismiss="modal" value="No">
-                                                    {{-- <button type="button" class="btn btn-success"
-                                                    data-bs-dismiss="modal">Cập nhật</button> --}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmShip{{ $g->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $g->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery" value="2">
+                                                        <p class="text-center">
+                                                            Xác nhận đã gửi đơn hàng :
+                                                            <strong class="h6">{{ $g->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $g->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmPaid{{ $g->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $g->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="3">
+                                                        <p class="text-center">
+                                                            Xác nhận đơn hàng :
+                                                            <strong class="h6">{{ $g->orderNumber }}</strong>
+                                                            đã được thanh toán!
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $g->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
                                                 </div>
                                             </div>
                                         </div>
@@ -172,9 +269,37 @@
                             <td class="text-danger fw-bold">
                                 <h5>$ {{ $b->amount * $b->price }}</h5>
                             </td>
-                            <td>đã thanh toán...</td>
+                            @if ($b->delivery == 0)
+                                <td>Đang chờ xử lý...</td>
+                            @elseif($b->delivery == 1)
+                                <td>Đã xác nhận!</td>
+                            @elseif($b->delivery == 2)
+                                <td>Đang giao hàng</td>
+                            @else
+                                <td>Đã thanh toán!</td>
+                            @endif
                             <td>
-                                <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button>
+                                @if ($b->delivery == 0)
+                                    <a class="btn btn-info" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirm{{ $b->id }}">
+                                        Xác Nhận
+                                    </a>
+                                @elseif($b->delivery == 1)
+                                    <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmShip{{ $b->id }}">
+                                        <i class="fa-solid fa-upload"></i>
+                                        Gửi hàng
+                                    </a>
+                                @elseif($b->delivery == 2)
+                                    <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmPaid{{ $b->id }}">
+                                        <i class="fa-solid fa-check"></i>
+                                        Đã thanh toán
+                                        </button>
+                                    </a>
+                                @else
+                                    <i class="fa-solid fa-check" style="color: seagreen"></i>
+                                @endif
                                 {{-- <form action="{{ route('dltOrder', ['id' => $b->orderNumber]) }}" method="POST"
                                     onsubmit="returnConfirmDeletr(this)">
                                     @csrf
@@ -183,6 +308,137 @@
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form> --}}
+                                <div class="modal" id="myModalComfirm{{ $b->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $b->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $b->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="1">
+                                                        <p class="text-center">
+                                                            Bạn có chắc chắn xác nhận đơn hàng với mã là:
+                                                            <strong class="h6">{{ $b->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirm', ['id' => $b->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmShip{{ $b->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $b->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $b->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="2">
+                                                        <p class="text-center">
+                                                            Xác nhận đã gửi đơn hàng :
+                                                            <strong class="h6">{{ $b->orderNumber }}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $b->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal" id="myModalComfirmPaid{{ $b->id }}">
+                                    <form method="POST" action="{{ route('comfirm', $b->orderNumber) }}">
+                                        @csrf
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header bg-warning">
+                                                    <h6 class="modal-title">Đơn hàng: {{ $b->orderNumber }}
+                                                    </h6>
+
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <input class="d-none" type="text" name="delivery"
+                                                            value="3">
+                                                        <p class="text-center">
+                                                            Xác nhận đơn hàng :
+                                                            <strong class="h6">{{ $b->orderNumber }}</strong>
+                                                            đã được thanh toán!
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer"
+                                                    style="display: flex; justify-content: space-around;">
+                                                    {{-- <input type="submit" class="btn btn-success" value="Yes"> --}}
+                                                    <form method="post"
+                                                        action="{{ route('comfirmShip', ['id' => $b->id]) }}">
+                                                        @csrf
+                                                        <input style="width: 90px !important" type="submit"
+                                                            class="btn btn-success" value="Yes" />
+                                                    </form>
+
+                                                    <input style="width: 90px !important" type="button"
+                                                        class="btn btn-danger" data-bs-dismiss="modal" value="No">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -226,11 +482,44 @@
                             <td class="text-danger fw-bold">
                                 <h5>$ {{ $s->amount * $s->price }}</h5>
                             </td>
-                            <td>đã thanh toán...</td>
+                            @if ($s->delivery == 0)
+                                {
+                                <td>Đang chờ xử lý...</td>
+                                }
+                            @elseif($s->delivery == 1)
+                                {
+                                <td>Đã xác nhận!</td>
+                                }
+                            @elseif($s->delivery == 2)
+                                {
+                                <td>Đang giao hàng</td>
+                                }
+                            @else{
+                                <td>Đã thanh toán!</td>
+                                }
+                            @endif
                             <td>
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa-solid fa-check"></i> Lên đơn
-                                </button>
+                                @if ($s->delivery == 0)
+                                    <a class="btn btn-info" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirm{{ $s->id }}">
+                                        Xác Nhận
+                                    </a>
+                                @elseif($s->delivery == 1)
+                                    <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmShip{{ $s->id }}">
+                                        <i class="fa-solid fa-upload"></i>
+                                        Gửi hàng
+                                    </a>
+                                @elseif($s->delivery == 2)
+                                    <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#myModalComfirmPaid{{ $s->id }}">
+                                        <i class="fa-solid fa-check"></i>
+                                        Đã thanh toán
+                                        </button>
+                                    </a>
+                                @else
+                                    <i class="fa-solid fa-check" style="color: seagreen"></i>
+                                @endif
 
                                 {{-- <form action="{{ route('dltOrder', ['id' => $s->orderNumber]) }}" method="POST"
                                     onsubmit="returnConfirmDeletr(this)">

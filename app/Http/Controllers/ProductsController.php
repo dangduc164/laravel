@@ -264,10 +264,34 @@ class ProductsController extends Controller
     public function comfirm(Request $request, $orderNumber)
     {
         $input = $request->except(['_token']);;
-        dd($input);
+        // dd($input);
         try {
             Cart::comfirm($input, $orderNumber);
-            return redirect()->route('home')->with('success', 'Đã xác nhận đơn hàng!');
+            return redirect()->route('order')->with('success', 'Đã xác nhận đơn hàng!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    //gửi hàng
+    public function comfirmShip(Request $request, $orderNumber)
+    {
+        $input = $request->except(['_token']);;
+        // dd($input);
+        try {
+            Cart::comfirm($input, $orderNumber);
+            return redirect()->route('order')->with('ship', 'Đã xác nhận gửi đơn hàng!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    //xác nhận thanh toán
+    public function comfirmPaid(Request $request, $orderNumber)
+    {
+        $input = $request->except(['_token']);;
+        // dd($input);
+        try {
+            Cart::comfirm($input, $orderNumber);
+            return redirect()->route('order')->with('paid', 'Giao hàng thành công!');
         } catch (Exception $ex) {
             throw $ex;
         }

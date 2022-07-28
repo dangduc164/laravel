@@ -120,6 +120,7 @@ dl {
 #dashboard .wrap ul {
   display: flex;
   justify-items: left;
+  flex-wrap: wrap;
   gap: 50px;
 }
 
