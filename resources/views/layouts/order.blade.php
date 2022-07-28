@@ -140,7 +140,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmShip{{ $g->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmShip', $g->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -182,7 +182,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmPaid{{ $g->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmPaid', $g->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -353,7 +353,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmShip{{ $b->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $b->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmShip', $b->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -396,7 +396,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmPaid{{ $b->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $b->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmPaid', $b->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -574,7 +574,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmShip{{ $s->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $s->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmShip', $s->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -617,7 +617,7 @@
                                     </form>
                                 </div>
                                 <div class="modal" id="myModalComfirmPaid{{ $s->id }}">
-                                    <form method="POST" action="{{ route('comfirm', $s->orderNumber) }}">
+                                    <form method="POST" action="{{ route('comfirmPaid', $s->orderNumber) }}">
                                         @csrf
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
