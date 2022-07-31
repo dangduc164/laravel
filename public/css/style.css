@@ -590,6 +590,9 @@ a:hover {
     min-height: 370px;
     overflow: hidden;
 }
+.zoom-img {
+    width: 100%;
+}
 
 .zoom-img {
     transition: all 0.3s ease;

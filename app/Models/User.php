@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
+        'admin',
         'password',
     ];
 
@@ -42,4 +43,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    static function comfirm($resquest, $id)
+    {
+        User::where('id', $id)->update($resquest);
+    }
 }

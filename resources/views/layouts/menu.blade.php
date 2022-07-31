@@ -4,6 +4,10 @@
         <i class="nav-icon fas fa-home"></i>
         <p>Trang chủ</p>
     </a>
+    <a href="{{ route('member') }}" class="nav-link {{ Request::is('member') ? 'active' : '' }}">
+        <i class="fa-solid fa-users-gear"></i>
+        <p> Quản lý member</p>
+    </a>
     <a href="{{ route('contact') }}" class="nav-link {{ Request::is('contact') ? 'active' : '' }}">
         <i class="fa-solid fa-mobile-screen-button pl-2"></i>
         <p>Thông tin liên hệ</p>

@@ -86,17 +86,7 @@
                                 @else
                                     <i class="fa-solid fa-check" style="color: seagreen"></i>
                                 @endif
-                                {{-- <button class="btn btn-primary"><i class="fa-solid fa-check"></i> Lên đơn</button> --}}
-                                {{-- <form action="{{ route('dltOrder', ['id' => $g->orderNumber]) }}" method="POST"
-                                    onsubmit="returnConfirmDeletr(this)">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger text-white" type="submit">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </form> --}}
 
-                                <!-- modal cancel--->
                                 <div class="modal" id="myModalComfirm{{ $g->id }}">
                                     <form method="POST" action="{{ route('comfirm', $g->orderNumber) }}">
                                         @csrf

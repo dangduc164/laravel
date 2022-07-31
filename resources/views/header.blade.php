@@ -85,13 +85,13 @@
                 <div class="header_box">
                     <div class="lang_box">
                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
-                            <img class="zoom-img" src="./images/logo-VN.jpg" alt="flag" width="16px"
-                                height="11px" class="mr-2" title="United Kingdom" /> Tiếng Việt
+                            <img src="./images/logo-VN.jpg" alt="flag" width="16px" height="11px" class="mr-2"
+                                title="United Kingdom" /> Tiếng Việt
                             <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
                         </a>
                         <div class="dropdown-menu">
                             <a href="#" class="dropdown-item">
-                                <img class="zoom-img" src="./images/flag-uk.png" class="mr-2" alt="flag" />
+                                <img src="./images/flag-uk.png" class="mr-2" alt="flag" />
                                 English
                             </a>
                         </div>

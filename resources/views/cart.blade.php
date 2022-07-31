@@ -35,7 +35,7 @@
             @endif
             {{-- end thông báo --}}
             <div class="row pb-16">
-                <div class="col-12 col-12 col-md-12 pb-5">
+                <div class="col-12 col-12 col-md-12 pb-5 overflow-auto">
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr>
@@ -79,22 +79,29 @@
                                     <!-- thanh tiền-->
                                     <td class="text-danger">$ {{ $show->price * $show->amount }}</td>
                                     <td style="display: flex; gap: 5px;justify-content: start">
-                                        {{-- cập nhật thông tin sp --}}
-                                        <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
-                                            data-bs-toggle="modal" data-bs-target="#myModal{{ $show->id }}">
-                                            <i class="fa-solid fa-pen-alt"></i>
-                                        </a>
-
-                                        <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                                        <form method="post" action="{{ route('deleteItem', ['id' => $show->id]) }}"
-                                            onsubmit="returnConfirmDeletr(this)">
-                                            @csrf
-                                            @method('delete')
-                                            <input type="submit" class="btn btn-danger" value="xóa">
-                                        </form>
-
+                                        @if ($show->status == 0)
+                                            {{-- cập nhật thông tin sp --}}
+                                            <a class="btn btn-primary" name="btnUpdate" id="btnUpdate" href="#"
+                                                data-bs-toggle="modal" data-bs-target="#myModal{{ $show->id }}">
+                                                <i class="fa-solid fa-pen-alt"></i>
+                                            </a>
+                                        @else
+                                            <a class="btn btn-primary d-none" name="btnUpdate" id="btnUpdate"
+                                                href="#" data-bs-toggle="modal"
+                                                data-bs-target="#myModal{{ $show->id }}">
+                                                <i class="fa-solid fa-pen-alt"></i>
+                                            </a>
+                                        @endif
                                         {{-- btn order --}}
                                         @if ($show->status == 0)
+                                            <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
+                                            <form method="post"
+                                                action="{{ route('deleteItem', ['id' => $show->id]) }}"
+                                                onsubmit="returnConfirmDeletr(this)">
+                                                @csrf
+                                                @method('delete')
+                                                <input type="submit" class="btn btn-danger" value="xóa">
+                                            </form>
                                             <a class="btn btn-success" name="btnUpdate" id="btnUpdate" href="#"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#myModalOrder{{ $show->id }}">

@@ -20,10 +20,16 @@ class Contact extends Model
 
     static function add($request)
     {
-
-
         try {
             Contact::create($request);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    static function comfirm($resquest, $id)
+    {
+        try {
+            Contact::where('id', $id)->update($resquest);
         } catch (Exception $ex) {
             throw $ex;
         }

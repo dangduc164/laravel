@@ -15,6 +15,7 @@ use App\Http\Controllers\SpmaleController;
 use App\Http\Controllers\Male_productController;
 use App\Http\Controllers\Female_productController;
 use App\Http\Controllers\FemaleController;
+use App\Http\Controllers\InfromationController;
 use App\Http\Controllers\MaleController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShoesController;
@@ -47,19 +48,6 @@ Route::get('/', [ProductsController::class, 'index']);
 // thêm sản phẩm vào giỏ hàng
 Route::post('/addcart/{id}', [ProductsController::class, 'addcart'])->name('addcart');
 
-
-
-/*---- Admin -----*/
-
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-/*---- End Admin ----- */
-
-Route::post('demo/store', [DemoControll::class, 'store'])->name('demo.store');
-
-Route::get('demo', [DemoControll::class, 'index'])->name('demo');
 
 /*-- Thêm sản phẩm male --*/
 
@@ -123,6 +111,11 @@ Auth::routes();
 Route::group(['middleware' => 'isadmin'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/member', [App\Http\Controllers\InfromationController::class, 'index'])->name('member');
+    //cấp quyền
+    Route::post('/comfirmGrant/{id}', [InfromationController::class, 'update'])->name('comfirmGrant');
+    //thu hồi quyền
+    Route::post('/comfirmRecall/{id}', [InfromationController::class, 'reCall'])->name('comfirmRecall');
     Route::get('/order', [App\Http\Controllers\ProductsController::class, 'showOrder'])->name('order');
 
     //admin duyệt đơn
@@ -131,7 +124,8 @@ Route::group(['middleware' => 'isadmin'], function () {
     Route::post('/comfirmShip/{id}', [ProductsController::class, 'comfirmShip'])->name('comfirmShip');
     //xác nhận thanh toán
     Route::post('/comfirmPaid/{id}', [ProductsController::class, 'comfirmPaid'])->name('comfirmPaid');
-
+    // xác nhận đã liên hệ
+    Route::post('comfirmContact/{id}', [ContactController::class, 'comfirmContact'])->name('comfirmContact');
 
 
     Route::get('/male', [App\Http\Controllers\MaleController::class, 'index'])->name('male');

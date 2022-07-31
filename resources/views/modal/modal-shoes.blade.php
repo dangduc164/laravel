@@ -5,7 +5,7 @@
              <div class="modal-content">
                  <form action="{{ route('addcartS', $shoe->id) }}" method="post">
                      @csrf
-                     <div class="wrap">
+                     <div class="wrap p-4">
                          <div class="row">
                              <div class="col-12 col-md-6">
                                  <div class="img-product">
@@ -20,7 +20,7 @@
                                                  name="type" value="3" />
                                          </label>
                                      </div>
-                                     <div class="title-product">
+                                     <div class="title-product py-3">
                                          <label for="name" class="fw-bold text-warning h5">Tên sản phẩm:</label>
                                          <p class="text-center h5">{{ $shoe->name }}</p>
                                      </div>
@@ -33,13 +33,13 @@
                                          <p class="fw-normal text-dark fs-6">{{ $shoe->content }}</p>
                                      </div>
 
-                                     <div class="sl">
+                                     <div class="sl py-3">
                                          <label for="amount" class="text-warning h5 fw-bold">số lượng:</label>
                                          <br>
                                          <input type="number" name="amount" value="1" class="ml-2 p-1" />
 
                                      </div>
-                                     <div class="size-product">
+                                     <div class="size-product py-3">
                                          <label for="size" class="text-warning h5 fw-bold">Size:</label>
                                          <br>
                                          <select name="size" id="size" style="width: 30%" class="ml-2 p-2">

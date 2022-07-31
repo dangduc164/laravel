@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -70,9 +71,16 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function comfirmContact(Request $request, $id)
     {
-        //
+        $input = $request->except(['_token']);;
+        //dd($input);
+        try {
+            Contact::comfirm($input, $id);
+            return redirect()->route('contact')->with('success', 'Xác nhận thành công!');
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     }
 
     /**
