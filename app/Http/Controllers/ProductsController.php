@@ -26,8 +26,15 @@ class ProductsController extends Controller
         $males = DB::table('female_products')->get();
         $females = DB::table('male_products')->get();
         $shoes = DB::table('shoes_products')->get();
+        $user = DB::table('users')->get();
+        return view('welcome', compact('males', 'females', 'shoes', 'user'));
+    }
 
-        return view('welcome', compact('males', 'females', 'shoes'));
+
+
+    public function search()
+    {
+        $search = DB::table('male_products')->join('shoes_product', 'name')->join('female_products', 'name')->get();
     }
 
     /**
@@ -178,7 +185,7 @@ class ProductsController extends Controller
             //show sản phẩm thêm vào giỏ hàng theo user_email
             $email_user = Auth::user()->email;
             // dd($email_user);
-            $shows = DB::table('carts')->where('email', $email_user)->get();
+            $shows = DB::table('carts')->where('email', $email_user)->paginate(6);
             // dd($shows);
             return view('cart', compact('shows'));
         } else {

@@ -1,7 +1,7 @@
 <!-- banner bg main start -->
 <div class="banner_bg_main">
     <!-- header top section start -->
-    <div class="container">
+    {{-- <div class="container">
         <div class="header_section_top">
             <div class="row">
                 <div class="col-sm-12">
@@ -16,14 +16,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="logo_section">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a href="{{ route('welcome') }}">
                             <h1 class="text-white"><b>DQ.SHOP</b></h1>
                         </a>
                     </div>
@@ -45,9 +45,8 @@
                     <a href="{{ route('login') }}">Đăng Nhập</a>
                     <a href="#"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Sign out
+                        Thoát
                     </a>
-
                     <li class="user-footer">
                         {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
 

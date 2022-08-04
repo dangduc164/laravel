@@ -86,7 +86,8 @@ class Male_productController extends Controller
             'image_path' => $input['image_path'],
         ];
         if (Male_product::upd($product, $id) == true) {
-            return redirect()->route('layouts.female')->with('success', 'Sửa sản phẩm thành công!' . $input['name']);
+            return redirect()->route('layouts.female')
+                ->with('success', 'Sửa sản phẩm thành công!' . $input['name']);
         };
     }
 
