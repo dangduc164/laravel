@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 09, 2022 lúc 03:24 AM
+-- Thời gian đã tạo: Th8 05, 2022 lúc 10:03 AM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 8.0.7
 
@@ -135,6 +135,7 @@ CREATE TABLE `admin_role_menu` (
 --
 
 INSERT INTO `admin_role_menu` (`role_id`, `menu_id`, `created_at`, `updated_at`) VALUES
+(1, 2, NULL, NULL),
 (1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -155,6 +156,7 @@ CREATE TABLE `admin_role_permissions` (
 --
 
 INSERT INTO `admin_role_permissions` (`role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
 (1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -175,6 +177,7 @@ CREATE TABLE `admin_role_users` (
 --
 
 INSERT INTO `admin_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
 (1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -217,6 +220,42 @@ CREATE TABLE `admin_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `orderNumber` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `userName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `image_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `delivery` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `carts`
+--
+
+INSERT INTO `carts` (`id`, `orderNumber`, `userName`, `email`, `phone`, `image_path`, `name`, `content`, `price`, `amount`, `size`, `type`, `status`, `delivery`, `created_at`, `updated_at`) VALUES
+(35, '1548569256', 'admin', 'admin@gmail.com', 967771606, 'set4in1.jpg', 'SET 5 in 1', '', 30, 1, 'xs', 1, 1, 3, '2022-07-27 09:06:51', '2022-08-02 14:06:42'),
+(36, '1458289664', 'admin', 'admin@gmail.com', 967771606, 'set3-legging.jpg', 'SET Legging', '', 7, 1, 'xs', 2, 0, 0, '2022-07-27 09:07:09', '2022-07-31 13:11:07'),
+(37, '1176662748', 'admin', 'admin@gmail.com', 133264, 'shoes2.jpg', 'Sản Phẩm 2', '', 9, 1, '36', 3, 0, 0, '2022-07-27 09:07:53', '2022-08-02 14:08:41'),
+(41, '1024694405', 'admin', 'admin@gmail.com', 967771606, 'shoes2.jpg', 'Sản Phẩm 2', '', 9, 1, '36', 3, 1, 3, '2022-07-28 02:58:13', '2022-07-28 14:34:03'),
+(42, '2120663733', 'dangduc', 'ducden164@gmail.com', 967771606, 'Set Đồ Tập GYM.jpg', 'Sét Đồ Tập GYM', '654asd5', 30, 1, 'xs', 1, 1, 2, '2022-08-02 13:39:41', '2022-08-02 14:05:43');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `contacts`
 --
 
@@ -227,9 +266,17 @@ CREATE TABLE `contacts` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `fullname`, `email`, `phone`, `comment`, `status`, `created_at`, `updated_at`) VALUES
+(14, 'Đức', 'Nguyễn Đăng', 'ducden164@gmail.com', '0967771606', 'tôi muốn mua hàng', 1, '2022-07-26 14:00:08', '2022-07-31 14:01:24');
 
 -- --------------------------------------------------------
 
@@ -260,37 +307,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `female_product`
---
-
-CREATE TABLE `female_product` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `female_product`
---
-
-INSERT INTO `female_product` (`id`, `name`, `price`, `content`, `image_path`, `created_at`, `updated_at`) VALUES
-(1, 'SET Drifit', 9, '', 'set1-drifit.png', NULL, NULL),
-(2, 'SET BatMan', 10, '', 'set2-batman.png', NULL, NULL),
-(3, 'SET Legging', 7, '', 'set3-legging.jpg', NULL, NULL),
-(4, 'SET-Optimized', 2, '', 'set4_optimized.jpeg', NULL, NULL),
-(5, 'SET Legging', 30, '', 'set5-legging.png', NULL, NULL),
-(6, 'SET Showdow', 10, '', 'set6-x-showdow.png', NULL, NULL),
-(7, 'SET SportMan', 10, '', 'set7-SportMan.jpg', NULL, NULL),
-(8, 'SET Basketball', 10, '', 'sp8-Basketball.jpgg', NULL, NULL),
-(9, 'Sản Phẩm 9', 10, '', 'sp9.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +360,7 @@ CREATE TABLE `male_products` (
 --
 
 INSERT INTO `male_products` (`id`, `name`, `price`, `content`, `image_path`, `created_at`, `updated_at`) VALUES
-(2, 'Đồ GYM YOGA', 10, '', 'sp2.png', NULL, NULL),
+(2, 'Áo Lưới Tập GYM YOGA', 23, 'đẹp', 'Áo Lưới Tập GYM YOGA.jpg', NULL, '2022-07-26 13:19:28'),
 (3, 'Đồ GYM YOGA', 7, '', 'sp3.jpg', NULL, NULL),
 (4, 'Áo Bra', 2, '', 'sp4.png', NULL, NULL),
 (5, 'SET 5 in 1', 30, '', 'set4in1.jpg', NULL, NULL),
@@ -353,7 +369,8 @@ INSERT INTO `male_products` (`id`, `name`, `price`, `content`, `image_path`, `cr
 (8, 'Áo Croptop lưới cao cấp', 10, '', 'ao-croptop-luoi.png', NULL, NULL),
 (9, 'Đồ GYM YOGA', 10, '', 'sp6.jpg', NULL, NULL),
 (12, 'Sét Đồ Tập GYM', 30, '654asd5', 'Set Đồ Tập GYM.jpg', '2022-07-08 01:31:26', '2022-07-08 16:58:52'),
-(13, 'Áo Tập GYM, YOGA', 20, 'chất bao đẹp', 'Áo Tập GYM.jpg', '2022-07-08 16:59:53', '2022-07-08 16:59:53');
+(13, 'Áo Tập GYM, YOGA', 20, 'chất bao đẹp', 'Áo Tập GYM.jpg', '2022-07-08 16:59:53', '2022-07-08 16:59:53'),
+(14, 'abc', 1273, 'adahj', 'YaGa Louro SE44.jpg', '2022-07-09 02:28:35', '2022-07-09 02:28:35');
 
 -- --------------------------------------------------------
 
@@ -382,8 +399,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2016_01_04_173148_create_admin_tables', 2),
 (10, '2022_06_29_031651_create_female_products_table', 4),
 (12, '2022_06_29_060750_create_shoes_products_table', 5),
-(15, '2022_06_30_040753_create_order_products_table', 6),
-(16, '2022_06_30_163105_create_contacts_table', 6);
+(16, '2022_06_30_163105_create_contacts_table', 6),
+(18, '2022_07_24_150024_create_carts_table', 7),
+(19, '2022_06_30_040799_create_order_products_table', 8),
+(24, '2022_06_30_040786_create_order_products_table', 9);
 
 -- --------------------------------------------------------
 
@@ -393,9 +412,46 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `order_products` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `orderNumber` int(255) NOT NULL,
+  `userName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` int(11) NOT NULL,
+  `image_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nameItem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` int(11) NOT NULL,
+  `type` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_products`
+--
+
+INSERT INTO `order_products` (`id`, `orderNumber`, `userName`, `email`, `phone`, `image_path`, `nameItem`, `price`, `size`, `amount`, `type`, `created_at`, `updated_at`) VALUES
+(2, 0, 'admin', 'admin@gmail.com', 967771606, 'sp8.png', 'Đồ tập GYM YOGA', 10, 'xs', 1, '', '2022-07-25 16:01:19', '2022-07-25 16:01:19'),
+(3, 0, 'admin', 'admin@gmail.com', 967771606, 'sp8.png', 'Đồ tập GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:05:50', '2022-07-25 16:05:50'),
+(4, 0, 'admin', 'admin@gmail.com', 967771606, 'sp8.png', 'Đồ tập GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:08:24', '2022-07-25 16:08:24'),
+(5, 0, 'admin', 'admin@gmail.com', 967771606, 'sp6.jpg', 'Đồ GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:09:17', '2022-07-25 16:09:17'),
+(6, 0, 'admin', 'admin@gmail.com', 967771606, 'sp6.jpg', 'Đồ GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:09:53', '2022-07-25 16:09:53'),
+(7, 0, 'admin', 'admin@gmail.com', 967771606, 'sp6.jpg', 'Đồ GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:10:14', '2022-07-25 16:10:14'),
+(8, 0, 'admin', 'admin@gmail.com', 967771606, 'sp6.jpg', 'Đồ GYM YOGA', 10, 'xs', 1, 'nữ', '2022-07-25 16:11:25', '2022-07-25 16:11:25'),
+(9, 0, 'admin', 'admin@gmail.com', 11231231, 'sp8-Basketball.jpg', 'SET Basketball', 10, 'xs', 1, 'nam', '2022-07-26 09:26:15', '2022-07-26 09:26:15'),
+(10, 0, 'admin', 'admin@gmail.com', 12378913, 'set7-SportMan.jpg', 'SET SportMan', 10, 'xs', 1, 'nam', '2022-07-26 10:12:12', '2022-07-26 10:12:12'),
+(11, 0, 'admin', 'admin@gmail.com', 2131, 'set5-legging.png', 'SET Legging', 30, 'xs', 1, 'nam', '2022-07-26 10:34:40', '2022-07-26 10:34:40'),
+(12, 0, 'admin', 'admin@gmail.com', 123, 'ADIDAS EDGE LŨ 3 EG1293.webp', 'Sản Phẩm 11001', 912, '36', 1, 'shoe', '2022-07-26 14:23:55', '2022-07-26 14:23:55'),
+(13, 0, 'admin', 'admin@gmail.com', 123, 'ADIDAS EDGE LŨ 3 EG1293.webp', 'Sản Phẩm 11001', 912, '36', 1, 'shoe', '2022-07-26 14:26:32', '2022-07-26 14:26:32'),
+(14, 0, 'admin', 'admin@gmail.com', 466, 'shoes4.jpg', 'Sản Phẩm 4', 9, '36', 1, 'shoe', '2022-07-26 14:31:48', '2022-07-26 14:31:48'),
+(15, 0, 'dangduc', 'ducden164@gmail.com', 2112, 'shoes8.jpg', 'Sản Phẩm 8', 9, '41', 2, 'shoe', '2022-07-27 02:34:12', '2022-07-27 02:34:12'),
+(16, 0, 'dangduc', 'ducden164@gmail.com', 2112, 'shoes8.jpg', 'Sản Phẩm 8', 9, '41', 2, 'shoe', '2022-07-27 02:34:37', '2022-07-27 02:34:37'),
+(17, 0, 'dangduc', 'ducden164@gmail.com', 2112, 'shoes8.jpg', 'Sản Phẩm 8', 9, '41', 2, 'shoe', '2022-07-27 02:35:05', '2022-07-27 02:35:05'),
+(18, 0, 'dangduc', 'ducden164@gmail.com', 2112, 'shoes8.jpg', 'Sản Phẩm 8', 9, '41', 2, 'shoe', '2022-07-27 02:36:03', '2022-07-27 02:36:03'),
+(19, 0, 'admin', 'admin@gmail.com', 321, 'shoes2.jpg', 'Sản Phẩm 2', 9, '36', 1, '3', '2022-07-27 04:48:12', '2022-07-27 04:48:12'),
+(20, 0, 'admin', 'admin@gmail.com', 4312, 'sp8.png', 'Đồ tập GYM YOGA', 10, 'xs', 1, '1', '2022-07-27 04:48:17', '2022-07-27 04:48:17'),
+(21, 0, 'admin', 'admin@gmail.com', 123, 'set2-batman.png', 'SET BatMan', 10, 'xs', 1, '2', '2022-07-27 04:48:21', '2022-07-27 04:48:21'),
+(22, 1004, 'admin', 'admin@gmail.com', 10101, 'sp4.png', 'Áo Bra', 2, 'xs', 1, '1', '2022-07-27 06:43:57', '2022-07-27 06:43:57');
 
 -- --------------------------------------------------------
 
@@ -414,6 +470,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('admin@gmail.com', '$2y$10$QDQdXmDff8JRqdZDRL/9..p9/VficqF.kl8fMfhfcCuwt4.FSB9Km', '2022-06-30 01:48:00'),
 ('admin@gmail.com', '$2y$10$QDQdXmDff8JRqdZDRL/9..p9/VficqF.kl8fMfhfcCuwt4.FSB9Km', '2022-06-30 01:48:00');
 
 -- --------------------------------------------------------
@@ -455,7 +512,6 @@ CREATE TABLE `shoes_products` (
 --
 
 INSERT INTO `shoes_products` (`id`, `name`, `price`, `content`, `image_path`, `created_at`, `updated_at`) VALUES
-(1, 'Sản Phẩm 11001', 912, 'đâ', 'ADIDAS EDGE LŨ 3 EG1293.webp', NULL, '2022-07-08 16:46:37'),
 (2, 'Sản Phẩm 2', 9, '', 'shoes2.jpg', NULL, NULL),
 (3, 'Sản Phẩm 3', 9, '', 'shoes3.jpg', NULL, NULL),
 (4, 'Sản Phẩm 4', 9, '', 'shoes4.jpg', NULL, NULL),
@@ -520,6 +576,7 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin` int(11) UNSIGNED DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -531,9 +588,9 @@ CREATE TABLE `users` (
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$Qes.AyfWBcV8onk.MJL4Su5.J7EbyGjQ2aDJBVl4VWLwwVGQZO4D.', NULL, '2022-06-23 06:45:07', '2022-06-23 06:45:07'),
-(2, 'admin', 'admin1@gmail.com', NULL, '$2y$10$t/saQwUxYua8CVncSXnBUeRkHax9Le6ibAHbKw/j7Klu1JgsivVuK', NULL, '2022-06-23 07:56:53', '2022-06-23 07:56:53');
+INSERT INTO `users` (`id`, `name`, `email`, `admin`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@gmail.com', 1, NULL, '$2y$10$Qes.AyfWBcV8onk.MJL4Su5.J7EbyGjQ2aDJBVl4VWLwwVGQZO4D.', NULL, '2022-06-23 06:45:07', '2022-06-23 06:45:07'),
+(9, 'dangduc', 'ducden164@gmail.com', 0, NULL, '$2y$10$3j3OVCvHBIuRUw5X4mT7kOt5aVM2rzkc7aiEmVNAhixCnAxT7iTVm', NULL, '2022-07-24 10:10:24', '2022-07-31 14:58:34');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -600,6 +657,12 @@ ALTER TABLE `admin_user_permissions`
   ADD KEY `admin_user_permissions_user_id_permission_id_index` (`user_id`,`permission_id`);
 
 --
+-- Chỉ mục cho bảng `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `contacts`
 --
 ALTER TABLE `contacts`
@@ -617,12 +680,6 @@ ALTER TABLE `demos`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Chỉ mục cho bảng `female_product`
---
-ALTER TABLE `female_product`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `female_products`
@@ -716,10 +773,16 @@ ALTER TABLE `admin_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT cho bảng `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
 -- AUTO_INCREMENT cho bảng `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `demos`
@@ -734,34 +797,28 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `female_product`
---
-ALTER TABLE `female_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT cho bảng `female_products`
 --
 ALTER TABLE `female_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `male_products`
 --
 ALTER TABLE `male_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -785,7 +842,7 @@ ALTER TABLE `spmales`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
