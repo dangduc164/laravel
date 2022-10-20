@@ -9,7 +9,7 @@
         "bumbummen99/shoppingcart": "^4.2",
         "encore/laravel-admin": "^1.8",
         "guzzlehttp/guzzle": "^7.2",
-        "infyomlabs/laravel-ui-adminlte": "^4.0",
+        "infyomlabs/laravel-ui-adminlte": "^5.1",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",

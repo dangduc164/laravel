@@ -113,16 +113,6 @@ dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-#dashboard .wrap .box{
- border-radius: 10px;
-}
-
-#dashboard .wrap ul {
-  display: flex;
-  justify-items: left;
-  flex-wrap: wrap;
-  gap: 50px;
-}
 
 ol ol,
 ul ul,
@@ -28084,7 +28074,6 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .login-box .card,
 .register-box .card {
   margin-bottom: 0;
-  border-radius: 15px;
 }
 
 .login-card-body,
@@ -28093,7 +28082,6 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   border-top: 0;
   color: #666;
   padding: 20px;
-  border-radius: 15px;
 }
 .login-card-body .input-group .form-control,
 .register-card-body .input-group .form-control {

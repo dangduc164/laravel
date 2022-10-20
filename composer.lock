@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3640b5c61720e1cd802c97ace54bbfd4",
+    "content-hash": "6178312c73758af4ae57399c10b41dab",
     "packages": [
         {
             "name": "brick/math",
@@ -1428,16 +1428,16 @@
         },
         {
             "name": "infyomlabs/laravel-ui-adminlte",
-            "version": "v4.0.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/InfyOmLabs/laravel-ui-adminlte.git",
-                "reference": "e3729756251569804dd1d4fff13880fdddf844b0"
+                "reference": "61aab3f160169d56acfb91e29b66dff9cb365967"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/laravel-ui-adminlte/zipball/e3729756251569804dd1d4fff13880fdddf844b0",
-                "reference": "e3729756251569804dd1d4fff13880fdddf844b0",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-ui-adminlte/zipball/61aab3f160169d56acfb91e29b66dff9cb365967",
+                "reference": "61aab3f160169d56acfb91e29b66dff9cb365967",
                 "shasum": ""
             },
             "require": {
@@ -1450,8 +1450,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "InfyOm\\AdminLTEPreset\\AdminLTEPresetServiceProvider",
-                        "InfyOm\\AdminLTEPreset\\FortifyAdminLTEPresetServiceProvider"
+                        "InfyOm\\AdminLTEPreset\\AdminLTEPresetServiceProvider"
                     ]
                 }
             },
@@ -1478,7 +1477,7 @@
             ],
             "support": {
                 "issues": "https://github.com/InfyOmLabs/laravel-ui-adminlte/issues",
-                "source": "https://github.com/InfyOmLabs/laravel-ui-adminlte/tree/v4.0.0"
+                "source": "https://github.com/InfyOmLabs/laravel-ui-adminlte/tree/v5.1.0"
             },
             "funding": [
                 {
@@ -1486,7 +1485,7 @@
                     "type": "opencollective"
                 }
             ],
-            "time": "2022-02-25T05:31:45+00:00"
+            "time": "2022-07-22T08:40:06+00:00"
         },
         {
             "name": "laravel/framework",
